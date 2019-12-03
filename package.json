@@ -1,0 +1,24 @@
+{
+  "name": "nicolui",
+  "version": "1.0.1",
+  "description": "nicol-ui",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Just-Doing/yltui.git"
+  },
+  "keywords": [
+    "nicolui"
+  ],
+  "author": "nicol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Just-Doing/yltui/issues"
+  },
+  "homepage": "https://github.com/Just-Doing/yltui#readme"
+}
