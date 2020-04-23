@@ -1,0 +1,43 @@
+{
+  "name": "nicolui",
+  "version": "1.0.11",
+  "description": "nicol-ui",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "Babel": "0.0.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^4.2.0",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "typescript": "^3.5.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "scripts": {
+    "dev": "webpack --config ./config/dev.js",
+    "build": "webpack --config ./config/pro.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Just-Doing/yltui.git"
+  },
+  "keywords": [
+    "nicolui"
+  ],
+  "author": "nicol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Just-Doing/yltui/issues"
+  },
+  "homepage": "https://github.com/Just-Doing/yltui#readme"
+}

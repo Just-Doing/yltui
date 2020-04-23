@@ -1,5 +1,5 @@
-function hello(name) {
-  console.log("你好啊：" + name);
+function searchtable(name) {
+  console.log("你好啊searchtable：" + name);
 }
 
-exports.hello = hello;
+export default searchtable;

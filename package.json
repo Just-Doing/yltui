@@ -1,20 +1,15 @@
 {
-  "name": "nicolui",
-  "version": "1.0.1",
-  "description": "nicol-ui",
-  "main": "index.js",
+  "name": "packages",
+  "description": "nicol-packages",
   "devDependencies": {
     "lerna": "^3.19.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Just-Doing/yltui.git"
+    "dev": "webpack --config ./config/dev.js",
+    "build": "webpack --config ./config/pro.js"
   },
   "keywords": [
-    "nicolui"
+    "packages"
   ],
   "author": "nicol",
   "license": "ISC",
