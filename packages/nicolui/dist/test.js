@@ -1,1 +1,0 @@
-const jsonform = require("./index");

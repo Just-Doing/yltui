@@ -2,6 +2,7 @@
   "name": "packages",
   "description": "nicol-packages",
   "devDependencies": {
+    "father": "^2.29.3",
     "lerna": "^3.19.0"
   },
   "scripts": {
