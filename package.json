@@ -3,11 +3,16 @@
   "description": "nicol-packages",
   "devDependencies": {
     "father": "^2.29.3",
-    "lerna": "^3.19.0"
+    "lerna": "^3.19.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "dev": "webpack --config ./config/dev.js",
-    "build": "webpack --config ./config/pro.js"
+    "build": "webpack --config ./webpack.config.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "packages"
