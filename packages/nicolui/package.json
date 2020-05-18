@@ -1,6 +1,6 @@
 {
   "name": "nicolui",
-  "version": "1.0.13",
+  "version": "0.0.1",
   "description": "nicol-ui",
   "main": "index.js",
   "module": "./src/moment.js",
