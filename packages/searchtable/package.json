@@ -6,10 +6,16 @@
   "scripts": {
     "build": "tsc"
   },
+  "files": [
+    "dist",
+    "index.js",
+    "*.d.ts"
+  ],
   "devDependencies": {
     "typescript": "^3.5.2"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "gitHead": "77cfd7763b368e107a4e3591ac7690841b133db5"
 }

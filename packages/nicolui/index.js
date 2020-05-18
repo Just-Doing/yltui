@@ -1,1 +1,1 @@
-module.exports = require("./dist/large-number.js");
+module.exports = require("./dist/index.js");

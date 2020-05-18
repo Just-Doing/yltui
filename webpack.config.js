@@ -7,8 +7,9 @@ module.exports = {
     searchtable: "./packages/searchtable/index.js",
   },
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "[name]/index.js",
+    publicPath: "",
+    path: path.resolve(__dirname, "./packages/"),
+    filename: "[name]/dist/index.js",
     library: "nicolui",
     libraryTarget: "umd",
   },
