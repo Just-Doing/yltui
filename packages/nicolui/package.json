@@ -1,7 +1,7 @@
 {
-  "name": "nicolui",
+  "name": "sharewinfo-ui",
   "version": "0.0.2",
-  "description": "nicol-ui",
+  "description": "sharewinfo-ui",
   "main": "index.js",
   "module": "./src/moment.js",
   "devDependencies": {
@@ -46,5 +46,5 @@
     "url": "https://github.com/Just-Doing/yltui/issues"
   },
   "homepage": "https://github.com/Just-Doing/yltui#readme",
-  "gitHead": "77cfd7763b368e107a4e3591ac7690841b133db5"
+  "gitHead": "d987d63966c87a5bf3cf14ef46f7013cebd5af48"
 }
