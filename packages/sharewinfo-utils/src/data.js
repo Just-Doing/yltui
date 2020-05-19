@@ -1,8 +1,3 @@
-// 个位数补0
-export function fixedZero(val) {
-  return val * 1 < 10 ? `0${val}` : val;
-}
-
 // 延迟发起请求，
 export function delayToDo(fun, ms) {
   if (!fun || !ms || typeof ms !== "number" || typeof fun !== "function") {
