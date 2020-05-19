@@ -1,4 +1,5 @@
-import * as math from "./math";
-import * as string from "./string";
+import * as data from "./data";
+import * as time from "./time";
+import * as url from "./url";
 
-export default { math, string };
+export { data, time, url };
