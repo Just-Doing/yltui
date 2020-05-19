@@ -14,8 +14,18 @@
   "devDependencies": {
     "typescript": "^3.5.2"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Just-Doing/yltui.git"
+  },
+  "keywords": [
+    "nicolui"
+  ],
+  "author": "nicol",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Just-Doing/yltui/issues"
+  },
+  "homepage": "https://github.com/Just-Doing/yltui#readme",
   "gitHead": "77cfd7763b368e107a4e3591ac7690841b133db5"
 }

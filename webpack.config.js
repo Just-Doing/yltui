@@ -4,7 +4,7 @@ module.exports = {
   mode: "production",
   entry: {
     nicolui: "./packages/nicolui/src/index.js",
-    searchtable: "./packages/searchtable/index.js",
+    searchtable: "./packages/searchtable/src/index.js",
   },
   output: {
     publicPath: "",

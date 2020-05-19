@@ -26,8 +26,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
-    "dev": "webpack --config ./config/dev.js",
-    "build": "webpack --config ./config/pro.js"
+    "build": "tsc"
   },
   "files": [
     "dist",
