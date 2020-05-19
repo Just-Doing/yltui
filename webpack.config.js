@@ -3,8 +3,8 @@ const path = require("path");
 module.exports = {
   mode: "production",
   entry: {
-    nicolui: "./packages/sharewinfo-utils/src/index.js",
-    searchtable: "./packages/sharewinfo-ui/src/index.js",
+    "sharewinfo-utils": "./packages/sharewinfo-utils/src/index.js",
+    "sharewinfo-ui": "./packages/sharewinfo-ui/src/index.js",
   },
   output: {
     publicPath: "",
