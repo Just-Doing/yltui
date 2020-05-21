@@ -1,16 +1,4 @@
 // 延迟发起请求，
-export function delayToDo1(fun, ms) {
-  if (!fun || !ms || typeof ms !== "number" || typeof fun !== "function") {
-    throw new Error("参数错误");
-  }
-  if (window.timer) {
-    clearTimeout(window.timer);
-  }
-  window.timer = setTimeout(() => {
-    fun();
-  }, ms);
-}
-// 延迟发起请求，
 export function delayToDo(fun, ms) {
   if (!fun || !ms || typeof ms !== "number" || typeof fun !== "function") {
     throw new Error("参数错误");
@@ -28,8 +16,8 @@ export function delayToDo(fun, ms) {
 export const recursionData = (list, keyName, parentKeyName, rootValue) => {
   function getData(childNodes, leveKey) {
     const res = [];
-    childNodes.forEach(o => {
-      const childs = list.filter(c => c[parentKeyName] === o[keyName]);
+    childNodes.forEach((o) => {
+      const childs = list.filter((c) => c[parentKeyName] === o[keyName]);
       o.leveKey = leveKey ? `${leveKey}-${o[keyName]}` : o[keyName];
       if (childs.length) {
         o.children = getData(childs, o.leveKey);
@@ -40,7 +28,7 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
     });
     return res;
   }
-  const roots = list.filter(o => o[parentKeyName] === rootValue);
+  const roots = list.filter((o) => o[parentKeyName] === rootValue);
   getData(roots, "");
   return roots;
 };
