@@ -16,3 +16,8 @@ export declare class url {
   static getPageQuery: () => object;
   static isUrl: (url: string) => boolean;
 }
+
+export declare class security {
+  static rsaEncrypt: (input: string, publicKey: string) => string;
+  static rsaDecode: (input: string, privateKey: string) => string;
+}
