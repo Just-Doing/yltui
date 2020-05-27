@@ -2,30 +2,30 @@
 
 接口：
 ## data
-  1. 延时 异步操作
-      delayToDo: (fun: Function, ms: number) => number;
-  2. 递归数据 input: [{id:1, pid:0, name:'test1'},{id:2, pid:1, name:'test1'}]
-             result: [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]
-      recursionData: (list: Array<any>, keyName: string, parentKeyName: string, rootValue: string) => Array<any>;
-  3. 数组去重
-      distincetData: (arrat: Array<any>, key: string) => Array<any>;
-  4. 度合并对象
-      distincetData: (arrat: Array<any>, key: string) => Array<any>;
-  5. 判断对象全等
-      shallowEqual: (objA: object, objB: object) => boolean;
+  1. 延时 异步操作<br />
+  &nbsp;&nbsp;delayToDo: (fun: Function, ms: number) => number;<br />
+  2. 递归数据 input: [{id:1, pid:0, name:'test1'},{id:2, pid:1, name:'test1'}]<br />
+             result: [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]<br />
+      recursionData: (list: Array<any>, keyName: string, parentKeyName: string, rootValue: string) => Array<any>;<br />
+  3. 数组去重<br />
+      distincetData: (arrat: Array<any>, key: string) => Array<any>;<br />
+  4. 度合并对象<br />
+      distincetData: (arrat: Array<any>, key: string) => Array<any>;<br />
+  5. 判断对象全等<br />
+      shallowEqual: (objA: object, objB: object) => boolean;<br />
 ## time
-  1. 格式化时间 YYYY-MM-dd HH:mm:ss
-      ormate: (inputDate: any) => string;
+  1. 格式化时间 YYYY-MM-dd HH:mm:ss<br />
+      ormate: (inputDate: any) => string;<br />
 ## file
-  1. 上传文件
-      UploadFile: (url: string, param: object, cab: Function, errcbk: Function) => void;
+  1. 上传文件<br />
+      UploadFile: (url: string, param: object, cab: Function, errcbk: Function) => void;<br />
 ## url
-  1. 获取url 参数
-      getPageQuery: () => object;
-  2. 校验url
-      isUrl: (url: string) => boolean;
+  1. 获取url 参数<br />
+      getPageQuery: () => object;<br />
+  2. 校验url<br />
+      isUrl: (url: string) => boolean;<br />
 ## security
-  1. RSA 加密  对应服务端可解密
-      rsaEncrypt: (input: string, publicKey: string) => string;
-  2. RSA 解密
+  1. RSA 加密  对应服务端可解密<br />
+      rsaEncrypt: (input: string, publicKey: string) => string;<br />
+  2. RSA 解密<br />
       saDecode: (input: string, privateKey: string) => string;
