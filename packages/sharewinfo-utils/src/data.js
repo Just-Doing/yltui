@@ -42,3 +42,18 @@ export const distincetData = (array, key) => {
   }, []);
   return res;
 };
+
+// 深度 合并对象
+export const merge = function(minor, main) {
+  for (var key in minor) {
+    const target = main[key];
+    if (main[key] === undefined) {
+      main[key] = minor[key];
+      continue;
+    }
+
+    if (typeof target == "object" && target.constructor == Object) {
+      arguments.callee(minor[key], main[key]);
+    }
+  }
+};
