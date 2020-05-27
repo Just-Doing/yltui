@@ -5,7 +5,7 @@ export declare class data {
   // input: [{id:1, pid:0, name:'test1'},{id:2, pid:1, name:'test1'}]
   // result: [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]
   static recursionData: (list: Array<any>, keyName: string, parentKeyName: string, rootValue: string) => Array<any>;
-  // 去重
+  // 数组去重
   static distincetData: (arrat: Array<any>, key: string) => Array<any>;
   // 深度合并对象
   static merge: (minor: object, minObj: object) => object;

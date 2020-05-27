@@ -1,9 +1,7 @@
-function searchtable(name) {
-  console.log("你好啊searchtable：" + name);
-}
+import * as jsonForm from './jsonForm';
 
 function searchtable1() {
-  console.log("你好啊searchtable1111：");
+  console.log('你好啊searchtable1111：');
 }
 
-export { searchtable, searchtable1 };
+export { jsonForm, searchtable1 };

@@ -1,4 +1,4 @@
-export interface Searchtable {
-  searchtable: (name: string) => void;
-  searchtable1: () => void;
+export declare class jsonForm {
+  // 上传文件
+  static render: () => void;
 }
