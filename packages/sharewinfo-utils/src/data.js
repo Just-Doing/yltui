@@ -1,7 +1,7 @@
 // 延迟发起请求，
 export function delayToDo(fun, ms) {
-  if (!fun || !ms || typeof ms !== "number" || typeof fun !== "function") {
-    throw new Error("参数错误");
+  if (!fun || !ms || typeof ms !== 'number' || typeof fun !== 'function') {
+    throw new Error('参数错误');
   }
   if (window.timer) {
     clearTimeout(window.timer);
@@ -29,7 +29,7 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
     return res;
   }
   const roots = list.filter((o) => o[parentKeyName] === rootValue);
-  getData(roots, "");
+  getData(roots, '');
   return roots;
 };
 
@@ -37,14 +37,14 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
 export const distincetData = (array, key) => {
   const hash = {};
   const res = array.reduce((item, next) => {
-    hash[next[key]] ? "" : (hash[next[key]] = true && item.push(next));
+    hash[next[key]] ? '' : (hash[next[key]] = true && item.push(next));
     return item;
   }, []);
   return res;
 };
 
 // 深度 合并对象
-export const merge = function(minor, main) {
+export const merge = function (minor, main) {
   for (var key in minor) {
     const target = main[key];
     if (main[key] === undefined) {
@@ -52,8 +52,28 @@ export const merge = function(minor, main) {
       continue;
     }
 
-    if (typeof target == "object" && target.constructor == Object) {
+    if (typeof target == 'object' && target.constructor == Object) {
       arguments.callee(minor[key], main[key]);
     }
   }
 };
+
+export function shallowEqual(objA, objB) {
+  if (Object.is(objA, objB)) {
+    return true;
+  }
+  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+    return false;
+  }
+  const keysA = Object.keys(objA);
+  const keysB = Object.keys(objB);
+  if (keysA.length !== keysB.length) {
+    return false;
+  }
+  for (let i = 0; i < keysA.length; i++) {
+    if (!hasOwnProperty.call(objB, keysA[i]) || !Object.is(objA[keysA[i]], objB[keysA[i]])) {
+      return false;
+    }
+  }
+  return true;
+}

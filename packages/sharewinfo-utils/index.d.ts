@@ -1,23 +1,38 @@
 export declare class data {
+  // 延时 异步操作
   static delayToDo: (fun: Function, ms: number) => number;
+  // 递归数据
+  // input: [{id:1, pid:0, name:'test1'},{id:2, pid:1, name:'test1'}]
+  // result: [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]
   static recursionData: (list: Array<any>, keyName: string, parentKeyName: string, rootValue: string) => Array<any>;
+  // 去重
   static distincetData: (arrat: Array<any>, key: string) => Array<any>;
+  // 深度合并对象
+  static merge: (minor: object, minObj: object) => object;
+  // 判断对象全等
+  static shallowEqual: (objA: object, objB: object) => boolean;
 }
 
 export declare class time {
-  static getDate: (inputDate: any) => string;
+  // 格式化时间 YYYY-MM-dd HH:mm:ss
+  static formate: (inputDate: any) => string;
 }
 
 export declare class file {
+  // 上传文件
   static UploadFile: (url: string, param: object, cab: Function, errcbk: Function) => void;
 }
 
 export declare class url {
+  // 获取url 参数
   static getPageQuery: () => object;
+  // 校验url
   static isUrl: (url: string) => boolean;
 }
 
 export declare class security {
+  // RSA 加密  对应服务端可解密
   static rsaEncrypt: (input: string, publicKey: string) => string;
+  // RSA 解密
   static rsaDecode: (input: string, privateKey: string) => string;
 }
