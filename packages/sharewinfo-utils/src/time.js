@@ -49,7 +49,7 @@ export function getTimeDistance(type) {
 }
 
 // 转换时间 为 yyyy-MM-DD hh:mm:ss
-export const getDate = (updateDate) => {
+export const getDate = (inputDate) => {
   let time = "";
   if (updateDate) {
     const date = new Date(updateDate);

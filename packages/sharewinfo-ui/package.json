@@ -1,6 +1,6 @@
 {
   "name": "sharewinfo-ui",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "",
   "main": "index.js",
   "module": "./src/moment.js",
@@ -28,5 +28,6 @@
     "url": "https://github.com/Just-Doing/yltui/issues"
   },
   "homepage": "https://github.com/Just-Doing/yltui#readme",
-  "gitHead": "b6d956af88a95c01fa6724c200f8d082f3bb8864"
+  "gitHead": "b6d956af88a95c01fa6724c200f8d082f3bb8864",
+  "dependencies": {}
 }
