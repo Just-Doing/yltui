@@ -1,7 +1,8 @@
-import * as jsonForm from './jsonForm';
+import * as jsonForm from './render-core';
 
-function searchtable1() {
-  console.log('你好啊searchtable1111：');
+function render(dom, option) {
+  const control = jsonForm[option.type](option);
+  dom.appendChild(control);
 }
 
-export { jsonForm, searchtable1 };
+export { render };
