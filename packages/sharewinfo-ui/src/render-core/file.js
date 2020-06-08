@@ -1,5 +1,6 @@
 export default () => {
   const control = document.createElement('input');
-  control.setAttribute('type', 'checkbox');
+  control.setAttribute('type', 'file');
+  control.setAttribute('name', option.name);
   return control;
 };

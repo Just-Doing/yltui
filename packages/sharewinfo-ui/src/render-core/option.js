@@ -1,5 +1,6 @@
-export default () => {
-  const control = document.createElement('input');
-  control.setAttribute('type', 'checkbox');
-  return control;
+export default (opt, checked) => {
+  const option = document.createElement('option');
+  option.setAttribute('value', opt.value);
+  checked && option.setAttribute('checked', 'checked');
+  return option;
 };

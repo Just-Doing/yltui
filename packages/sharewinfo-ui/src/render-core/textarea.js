@@ -1,5 +1,6 @@
-export default () => {
-  const control = document.createElement('input');
-  control.setAttribute('type', 'checkbox');
+export default (option) => {
+  const control = document.createElement('textarea');
+  control.setAttribute('name', option.name);
+  control.setAttribute('value', option.value);
   return control;
 };
