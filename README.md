@@ -1,9 +1,11 @@
 # yltui 是一个前端工具，包含一些和业务无关的公共方法
 
 安装： npm install sharewinfo-utils -S | npm install sharewinfo-ui -S | <br />
+
 <script type="text/javascript" src='node_modules/sharewinfo-ui/dist/index.js'></script> <br />
 <script type="text/javascript" src='node_modules/sharewinfo-utils/dist/index.js'></script> <br />
-全局对象 sharewinfo
+
+全局对象 sharewinfo<br />
 接口：
 
 ## data
