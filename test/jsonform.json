@@ -1,0 +1,44 @@
+[
+  {
+    "type": "col",
+    "span": 12,
+    "class": "class1",
+    "style": "style111",
+    "child": [
+      { "type": "textbox", "name": "username", "label": "用户名称" },
+      { "type": "textbox", "name": "age", "label": "年龄" },
+      { "type": "textbox", "name": "pwd", "label": "密码" }
+    ]
+  },
+  {
+    "type": "col",
+    "span": 12,
+    "class": "",
+    "style": "",
+    "child": [
+      { "type": "textbox", "name": "username1", "label": "用户名称" },
+      { "type": "textbox", "name": "age1", "label": "年龄" }
+    ]
+  },
+  {
+    "type": "col",
+    "span": 24,
+    "class": "",
+    "style": "",
+    "child": [{ "type": "text", "value": "这是描述文字" }]
+  },
+  {
+    "type": "col",
+    "span": 24,
+    "class": "",
+    "style": "",
+    "child": [
+      { "type": "textbox", "name": "username1", "label": "用户名称" },
+      { "type": "textbox", "name": "age1", "label": "年龄" },
+      { "type": "textbox", "name": "pwd1" },
+      { "type": "textbox", "name": "username1", "label": "用户名称" },
+      { "type": "textbox", "name": "username1", "label": "用户名称" },
+      { "type": "textbox", "name": "username1", "label": "用户名称" }
+    ]
+  }
+]

@@ -8,10 +8,12 @@ import redio from './radio';
 import reset from './reset';
 import select from './select';
 import submit from './submit';
-import textBox from './textBox';
+import textbox from './textBox';
 import textarea from './textArea';
 import checkboxGroup from './checkboxGroup';
 import radioGroup from './radioGroup';
+import col from './col';
+import text from './text';
 
 export {
   checkbox,
@@ -24,8 +26,10 @@ export {
   reset,
   select,
   submit,
-  textBox,
+  textbox,
   textarea,
   checkboxGroup,
   radioGroup,
+  col,
+  text,
 };
