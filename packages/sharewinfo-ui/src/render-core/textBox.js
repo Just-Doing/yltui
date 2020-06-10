@@ -1,20 +1,10 @@
-export default (option) => {
-  const waper = document.createElement('div');
-  waper.setAttribute('style', 'width: 100%');
-  const labelWaper = document.createElement('div');
-  labelWaper.setAttribute('style', 'float: left');
-  const controlWaper = document.createElement('div');
-  controlWaper.setAttribute('style', 'float: left');
+import { controlWithLabel } from '../render-utils';
 
-  labelWaper.innerHTML = option.label;
-
+export default option => {
   const control = document.createElement('input');
   control.setAttribute('type', 'txt');
   control.setAttribute('name', option.name);
-  control.setAttribute('value', option.value);
-  controlWaper.appendChild(control);
+  control.setAttribute('value', option.value || '');
 
-  waper.appendChild(labelWaper); // label
-  waper.appendChild(controlWaper); // control
-  return waper;
+  return controlWithLabel(option.label, option.waper, control);
 };

@@ -1,12 +1,14 @@
+import { controlWithLabel } from '../render-utils';
 import checkbox from './checkbox';
 
-export default (option) => {
-  const waper = document.createElement('span');
+export default option => {
+  const waper = document.createElement('div');
+  waper.setAttribute('class', 'checkbox-list');
+  (option.items || []).forEach(opt => {
+    opt.name = option.name;
+    const checkboxOption = checkbox(opt, opt.value === option.value);
 
-  (option.items || []).forEach((opt) => {
-    const option = checkbox(opt, opt.value === option.value);
-
-    waper.appendChild(option);
+    waper.appendChild(checkboxOption);
   });
-  return waper;
+  return controlWithLabel(option.label, option.waper, waper);
 };
