@@ -1,0 +1,157 @@
+<html>
+  <header>
+    <title></title>
+    <script type="text/javascript" src="index.js"></script>
+  </header>
+  <style>
+    .colorpick {
+      width: 118px;
+      display: flex;
+      flex-direction: row;
+      position: absolute;
+      top: 100px;
+      left: 500px;
+      flex-wrap: wrap;
+    }
+    .color-bord {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border: solid 1px #cbcbcb;
+      border-radius: 3px 0 0 3px;
+    }
+    .color-bord::after,
+    .color-bord::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .color-bord::before {
+      background: linear-gradient(to right, white, transparent);
+    }
+
+    .color-bord::after {
+      background: linear-gradient(to top, black, transparent);
+    }
+
+    .color-bar {
+      width: 15px;
+      height: 100px;
+      border: solid 1px #cbcbcb;
+      border-left: none;
+      border-radius: 0 3px 3px 0;
+      background: linear-gradient(
+        to top,
+        #f00 0%,
+        #ff0 16.66%,
+        #0f0 33.33%,
+        #0ff 50%,
+        #00f 66.66%,
+        #f0f 83.33%,
+        #f00 100%
+      );
+    }
+    .color-bar-porint {
+      width: 15px;
+      height: 3px;
+      border-top: solid 1px #fff;
+      border-bottom: solid 1px #fff;
+      background-color: #fff;
+      opacity: 0.8;
+      position: relative;
+      top: 50px;
+    }
+    .color-point {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #fff;
+      position: absolute;
+      bottom: 50px;
+      z-index: 1;
+    }
+    .color-card {
+      clear: both;
+      width: 50px;
+      height: 25px;
+      border: solid 1px #cbcbcb;
+    }
+  </style>
+  <body>
+    <div class="colorpick">
+      <div class="color-bord" style="background-color: hsl(360, 100%, 50%);">
+        <div class="color-point"></div>
+      </div>
+      <div class="color-bar">
+        <div class="color-bar-porint"></div>
+      </div>
+      <div class="color-card"></div>
+    </div>
+  </body>
+</html>
+<script>
+  const colorBord = document.querySelector(".color-bord");
+  const colorBar = document.querySelector(".color-bar");
+  const colorPoint = document.querySelector(".color-point");
+  const colorBarPoint = document.querySelector(".color-bar-porint");
+  const colorCard = document.querySelector(".color-card");
+  var clorRail = 0;
+  const hsv2hsl = function (h, s, v) {
+    return {
+      h,
+      s: (s * v) / ((h = (2 - s) * v) < 1 ? h : 2 - h) || 0,
+      l: h / 2,
+    };
+  };
+  function colorbordMove(e) {
+    colorPoint.setAttribute(
+      "style",
+      "top:" + e.offsetY + "px;left: " + e.offsetX + "px"
+    );
+    const colorBarWidth = 100,
+      colorBarHeight = 100;
+    const hue = Math.round((e.offsetX / colorBarWidth) * 100) / 100;
+    const light = Math.round((1 - e.offsetY / colorBarHeight) * 100) / 100;
+    const hsl = hsv2hsl(clorRail, hue, light);
+    colorCard.setAttribute(
+      "style",
+      "background-color: hsl(" +
+        clorRail +
+        ", " +
+        hsl.s * 100 +
+        "%, " +
+        hsl.l * 100 +
+        "%);"
+    );
+  }
+
+  function colorbarMove(e) {
+    colorBarPoint.setAttribute("style", "top:" + e.offsetY + "px;");
+    const colorBarHeight = 100;
+    clorRail = ((100 - e.offsetY) / colorBarHeight) * 360;
+    colorBord.setAttribute(
+      "style",
+      "background-color: hsl(" + clorRail + ", 100%, 50%);"
+    );
+  }
+
+  colorBord.onclick = colorbordMove;
+  colorBord.onmousedown = function () {
+    colorBord.addEventListener("mousemove", colorbordMove);
+  };
+  colorBord.onmouseup = function () {
+    colorBord.removeEventListener("mousemove", colorbordMove);
+  };
+
+  colorBar.onclick = colorbarMove;
+  colorBar.onmousedown = function () {
+    colorBar.addEventListener("mousemove", colorbarMove);
+  };
+  colorBar.onmouseup = function () {
+    colorBar.removeEventListener("mousemove", colorbarMove);
+  };
+</script>
