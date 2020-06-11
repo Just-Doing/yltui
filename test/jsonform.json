@@ -1,7 +1,7 @@
 [
   {
     "type": "col",
-    "span": 12,
+    "span": 24,
     "class": "class1",
     "style": "style111",
     "child": [

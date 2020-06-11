@@ -12,6 +12,7 @@
 .checkbox-waper,
 .checkbox-label-waper {
   display: inline-block;
+  white-space: nowrap;
 }
 .checkbox-list {
   display: flex;
