@@ -1,4 +1,4 @@
 export declare class jsonForm {
   // 上传文件
-  static render: () => void;
+  static render: (dom: any, json: any, fieldChange: any) => void;
 }
