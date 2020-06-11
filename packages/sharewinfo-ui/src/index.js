@@ -1,3 +1,3 @@
-import jsonFrom from './jsonForm';
+import * as jsonForm from './jsonForm';
 
-export { jsonFrom };
+export { jsonForm };
