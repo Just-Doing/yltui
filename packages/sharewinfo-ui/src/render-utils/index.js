@@ -28,4 +28,85 @@ const controlWithLabel = (labelOption, waperOption, control) => {
   return waper;
 };
 
-export { controlWithLabel };
+function boundValue(value, max) {
+  value = Math.min(max, Math.max(0, value));
+  if (Math.abs(value - max) < 0.000001) {
+    return 1;
+  }
+  return (value % max) / ~~max;
+}
+
+const hsv2hsl = function(h, s, v) {
+  return {
+    h,
+    s: (s * v) / ((h = (2 - s) * v) < 1 ? h : 2 - h) || 0,
+    l: h / 2,
+  };
+};
+
+const hsv2rgb = (h, s, v) => {
+  h = boundValue(h, 360);
+  s = boundValue(s * 100, 100);
+  v = boundValue(v * 100, 100);
+
+  const i = ~~(h * 6);
+  const f = h * 6 - i;
+  const p = v * (1 - s);
+  const q = v * (1 - f * s);
+  const t = v * (1 - (1 - f) * s);
+  let r = 0,
+    g = 0,
+    b = 0;
+  switch (i % 6) {
+    case 0:
+      r = v;
+      g = t;
+      b = p;
+      break;
+    case 1:
+      r = q;
+      g = v;
+      b = p;
+      break;
+    case 2:
+      r = p;
+      g = v;
+      b = t;
+      break;
+    case 3:
+      r = p;
+      g = q;
+      b = v;
+      break;
+    case 4:
+      r = t;
+      g = p;
+      b = v;
+      break;
+    case 5:
+      (r = v), (g = p), (b = q);
+      break;
+  }
+
+  const round = value => Math.round(value * 255);
+
+  return {
+    r: round(r),
+    g: round(g),
+    b: round(b),
+  };
+};
+
+const rgb2hex = (r, g, b) => {
+  let color = '#';
+  [r, g, b].forEach(v => {
+    let hex = v.toString(16);
+    if (hex.length < 2) {
+      hex = '0' + hex;
+    }
+    color += hex;
+  });
+  return color;
+};
+
+export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex };

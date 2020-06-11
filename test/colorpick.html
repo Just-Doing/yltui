@@ -22,7 +22,7 @@
     }
     .color-bord::after,
     .color-bord::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -94,13 +94,13 @@
   </body>
 </html>
 <script>
-  const colorBord = document.querySelector(".color-bord");
-  const colorBar = document.querySelector(".color-bar");
-  const colorPoint = document.querySelector(".color-point");
-  const colorBarPoint = document.querySelector(".color-bar-porint");
-  const colorCard = document.querySelector(".color-card");
+  const colorBord = document.querySelector('.color-bord');
+  const colorBar = document.querySelector('.color-bar');
+  const colorPoint = document.querySelector('.color-point');
+  const colorBarPoint = document.querySelector('.color-bar-porint');
+  const colorCard = document.querySelector('.color-card');
   var clorRail = 0;
-  const hsv2hsl = function (h, s, v) {
+  const hsv2hsl = function(h, s, v) {
     return {
       h,
       s: (s * v) / ((h = (2 - s) * v) < 1 ? h : 2 - h) || 0,
@@ -108,50 +108,41 @@
     };
   };
   function colorbordMove(e) {
-    colorPoint.setAttribute(
-      "style",
-      "top:" + e.offsetY + "px;left: " + e.offsetX + "px"
-    );
+    let disx = e.pageX - colorBord.offsetParent.offsetLeft;
+    let disy = e.pageY - colorBord.offsetParent.offsetTop;
+    colorPoint.setAttribute('style', 'top:' + disy + 'px;left: ' + disx + 'px');
     const colorBarWidth = 100,
       colorBarHeight = 100;
-    const hue = Math.round((e.offsetX / colorBarWidth) * 100) / 100;
-    const light = Math.round((1 - e.offsetY / colorBarHeight) * 100) / 100;
+    const hue = Math.round((disx / colorBarWidth) * 100) / 100;
+    const light = Math.round((1 - disy / colorBarHeight) * 100) / 100;
     const hsl = hsv2hsl(clorRail, hue, light);
     colorCard.setAttribute(
-      "style",
-      "background-color: hsl(" +
-        clorRail +
-        ", " +
-        hsl.s * 100 +
-        "%, " +
-        hsl.l * 100 +
-        "%);"
+      'style',
+      'background-color: hsl(' + clorRail + ', ' + hsl.s * 100 + '%, ' + hsl.l * 100 + '%);',
     );
   }
 
   function colorbarMove(e) {
-    colorBarPoint.setAttribute("style", "top:" + e.offsetY + "px;");
+    let disy = e.pageY - colorBar.offsetParent.offsetTop;
+    colorBarPoint.setAttribute('style', 'top:' + disy + 'px;');
     const colorBarHeight = 100;
-    clorRail = ((100 - e.offsetY) / colorBarHeight) * 360;
-    colorBord.setAttribute(
-      "style",
-      "background-color: hsl(" + clorRail + ", 100%, 50%);"
-    );
+    clorRail = ((100 - disy) / colorBarHeight) * 360;
+    colorBord.setAttribute('style', 'background-color: hsl(' + clorRail + ', 100%, 50%);');
   }
 
   colorBord.onclick = colorbordMove;
-  colorBord.onmousedown = function () {
-    colorBord.addEventListener("mousemove", colorbordMove);
+  colorBord.onmousedown = function() {
+    colorBord.addEventListener('mousemove', colorbordMove);
   };
-  colorBord.onmouseup = function () {
-    colorBord.removeEventListener("mousemove", colorbordMove);
+  colorBord.onmouseup = function() {
+    colorBord.removeEventListener('mousemove', colorbordMove);
   };
 
   colorBar.onclick = colorbarMove;
-  colorBar.onmousedown = function () {
-    colorBar.addEventListener("mousemove", colorbarMove);
+  colorBar.onmousedown = function() {
+    colorBar.addEventListener('mousemove', colorbarMove);
   };
-  colorBar.onmouseup = function () {
-    colorBar.removeEventListener("mousemove", colorbarMove);
+  colorBar.onmouseup = function() {
+    colorBar.removeEventListener('mousemove', colorbarMove);
   };
 </script>

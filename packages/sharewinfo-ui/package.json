@@ -10,7 +10,8 @@
   "files": [
     "dist",
     "index.js",
-    "*.d.ts"
+    "*.d.ts",
+    "style.css"
   ],
   "devDependencies": {
     "typescript": "^3.5.2"

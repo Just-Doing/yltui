@@ -1,4 +1,5 @@
 export default (option, checked) => {
+  if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
   const input = document.createElement('input');
   input.setAttribute('type', 'radio');
   input.setAttribute('name', option.name);

@@ -14,6 +14,8 @@ import checkboxGroup from './checkboxGroup';
 import radioGroup from './radioGroup';
 import col from './col';
 import text from './text';
+import color from './color';
+import colorGroup from './colorGroup';
 
 export {
   checkbox,
@@ -32,4 +34,6 @@ export {
   radioGroup,
   col,
   text,
+  color,
+  colorGroup,
 };
