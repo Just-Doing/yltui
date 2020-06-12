@@ -4,13 +4,13 @@
 
 <h1 align="center">sharewinfo-ui</h1>
 
-## jsonForm
+## 安装
 
 ```js
-安装： npm install sharewinfo-ui -S 或者 <script type="text/javascript" src='node_modules/sharewinfo-ui/dist/index.js' />
+npm install sharewinfo-ui -S 或者 <script type="text/javascript" src='node_modules/sharewinfo-ui/dist/index.js' />
 ```
 
-## 使用
+## jsonForm 使用
 
 ```js
 import { jsonForm } from 'sharewinfo-ui';
@@ -99,10 +99,10 @@ col | textBox | textarea | password | text | select | image | hidden | file | co
 
 <h1 align="center">sharewinfo-utils</h1>
 
-## sharewinfo-utils
+## 安装
 
 ```js
-安装： npm install sharewinfo-utils -S 或者 <script type="text/javascript" src='node_modules/sharewinfo-utils/dist/index.js' />
+npm install sharewinfo-utils -S 或者 <script type="text/javascript" src='node_modules/sharewinfo-utils/dist/index.js' />
 ```
 
 ### data
