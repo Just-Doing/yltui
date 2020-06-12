@@ -1,7 +1,7 @@
 # yltui 是一个前端工具，包含一些和业务无关的公共方法
 
 ## 项目结构
-![gif1](https://just-doing.github.io/yltui/packages/sharewinfo-ui/img/project.png)
+![project](https://just-doing.github.io/yltui/packages/sharewinfo-ui/img/project.png)
 
 
 <h1 align="center">sharewinfo-ui</h1>
