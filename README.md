@@ -180,13 +180,13 @@ const formJson = [
 ];
 ```
 
-![gif1](https://github.com/Just-Doing/yltui/blob/master/packages/sharewinfo-ui/img/panel.gif)
+![gif1](https://just-doing.github.io/yltui/packages/sharewinfo-ui/img/panel.gif)
 
 ## color 组件
 
 我们内置颜色选择器， 可指定 type 为 color 单个颜色选择，或者 colorGroup 颜色组 选择
 
-![jpg](https://github.com/Just-Doing/yltui/blob/master/packages/sharewinfo-ui/img/color.jpg)
+![jpg](https://just-doing.github.io/yltui/packages/sharewinfo-ui/img/color.jpg)
 
 ## json 属性 说明
 
