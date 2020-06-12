@@ -63,15 +63,15 @@ var formData = formInstance.getDate();
 
 以上 json 表示 一个 2 列 左右分布的表单，左右各占 50% 的宽度, 其中 col - span 12 / 24 \* 100 计算的宽度占比， 按照数组的项数依次版本，每行固定显示 24 个 span，超过 24 换行处理，如果排版上有要求，可以试用空 col 指定宽度来灵活调整
 
+## 样式
+
+所有控件的样式为原始样式，用户可根据自己的样式表来美化。
+
 ## color 组件
 
 我们内置颜色选择器， 可指定 type 为 color 单个颜色选择，或者 colorGroup 颜色组 选择
 
 ![jpg](https://github.com/Just-Doing/yltui/blob/master/packages/sharewinfo-ui/img/color.jpg)
-
-## 样式
-
-所有控件的样式为原始样式，用户可根据自己的样式表来美化。
 
 ## json 属性 说明
 
@@ -100,7 +100,7 @@ var formData = formInstance.getDate();
 
 ### 4. type 取值
 
-col | textBox | textarea | password | text | select | image | hidden | file | color | colorGroup | checkbox | checkboxGroup | radio | radioGroup
+col | textBox | textarea(待开发) | password(待开发) | text | select | image(待开发) | hidden(待开发) | file(待开发) | color | colorGroup | checkbox | checkboxGroup | radio(待开发) | radioGroup(待开发)
 
 <h1 align="center">sharewinfo-utils</h1>
 
