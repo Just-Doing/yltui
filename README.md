@@ -59,6 +59,14 @@ const formInstance = jsonForm.render(document.getElementById('domid'), formJson,
 var formData = formInstance.getData();
 ```
 
+## 排版
+
+以上 json 表示 一个 2 列 左右分布的表单，左右各占 50% 的宽度, 其中 col - span 12 / 24 \* 100 计算的宽度占比， 按照数组的项数依次版本，每行固定显示 24 个 span，超过 24 换行处理，如果排版上有要求，可以试用空 col 指定宽度来灵活调整
+
+## 样式
+
+所有控件的样式为原始样式，用户可根据自己的样式表来美化。
+
 ## Panel 收缩/展开
 
 ```js
@@ -173,14 +181,6 @@ const formJson = [
 ```
 
 ![gif1](https://github.com/Just-Doing/yltui/blob/master/packages/sharewinfo-ui/img/panel.gif)
-
-## 排版
-
-以上 json 表示 一个 2 列 左右分布的表单，左右各占 50% 的宽度, 其中 col - span 12 / 24 \* 100 计算的宽度占比， 按照数组的项数依次版本，每行固定显示 24 个 span，超过 24 换行处理，如果排版上有要求，可以试用空 col 指定宽度来灵活调整
-
-## 样式
-
-所有控件的样式为原始样式，用户可根据自己的样式表来美化。
 
 ## color 组件
 
