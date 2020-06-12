@@ -56,7 +56,7 @@ const formJson = [
 const fieldChange = fieldValue => {}; // 字段值发生改变时 回调
 const formInstance = jsonForm.render(document.getElementById('domid'), formJson, fieldChange);
 // form 表单数据获取
-var formData = formInstance.getDate();
+var formData = formInstance.getData();
 ```
 
 ## 排版
