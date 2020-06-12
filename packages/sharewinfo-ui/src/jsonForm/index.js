@@ -1,4 +1,4 @@
-import * as jsonForm from './render-core';
+import * as renderCore from './render-core';
 
 // 根节点 创建
 function rootElement() {
@@ -9,7 +9,7 @@ function rootElement() {
 
 function createControl(option) {
   // 根据不同的类型创建不同的控件
-  const control = jsonForm[option.type](option);
+  const control = renderCore[option.type](option);
   return control;
 }
 // 递归渲染 json
@@ -18,7 +18,11 @@ function recursionRender(dom, json, fieldChange, formData) {
   (json || []).forEach(o => {
     const control = createControl({ ...o, fieldChange });
     if (o.child && o.child.length) {
-      recursionRender(control, o.child, fieldChange, formData);
+      if (o.type === 'panels') {
+        recursionRender(control.body, o.child, fieldChange, formData);
+      } else {
+        recursionRender(control, o.child, fieldChange, formData);
+      }
     }
     if (o.name) formData[o.name] = o.type;
     dom.appendChild(control);

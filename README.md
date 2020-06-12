@@ -59,6 +59,121 @@ const formInstance = jsonForm.render(document.getElementById('domid'), formJson,
 var formData = formInstance.getData();
 ```
 
+## Panel 收缩/展开
+
+```js
+const formJson = [
+  {
+    type: 'col',
+    span: 12,
+    class: 'class1',
+    style: 'style111',
+    child: [
+      {
+        type: 'panels',
+        text: 'Paenl Name',
+        class: 'Class',
+        id: 'panels1',
+        child: [
+          {
+            type: 'textbox',
+            name: 'username1',
+            label: {
+              text: '用户名',
+              span: 8,
+            },
+            waper: { span: 16 },
+          },
+          {
+            type: 'checkboxGroup',
+            name: 'like',
+            label: {
+              text: '你喜欢的水果',
+              span: 8,
+            },
+            waper: { span: 16 },
+            items: [
+              { value: 'pinguo', text: '苹果' },
+              { value: 'taozi', text: '桃子' },
+              { value: 'xiangjiao', text: '香蕉' },
+            ],
+          },
+        ],
+      },
+      {
+        type: 'panels',
+        text: 'Paenl Name111111',
+        class: 'Class11111',
+        id: 'panels1222',
+        child: [
+          {
+            type: 'textbox',
+            name: 'e-mail',
+            label: {
+              text: '邮箱',
+              span: 8,
+            },
+            waper: { span: 16 },
+          },
+          {
+            type: 'select',
+            name: 'gender',
+            label: {
+              text: '性别',
+              span: 8,
+            },
+            waper: { span: 16 },
+            value: 'FM',
+            items: [
+              { value: 'M', text: '男' },
+              { value: 'FM', text: '女' },
+            ],
+          },
+          {
+            type: 'textbox',
+            name: 'phone',
+            label: {
+              text: '电话',
+              span: 8,
+            },
+            waper: { span: 16 },
+          },
+          {
+            type: 'textbox',
+            name: 'test',
+            label: {
+              text: '测试1',
+              span: 8,
+            },
+            waper: { span: 16 },
+          },
+          {
+            type: 'textbox',
+            name: 'test2',
+            label: {
+              text: '测试2',
+              span: 8,
+            },
+            waper: { span: 16 },
+          },
+          {
+            type: 'textbox',
+            name: 'test3',
+            label: {
+              text: '测试3',
+              span: 8,
+            },
+            waper: { span: 16 },
+          },
+        ],
+      },
+    ],
+  },
+];
+```
+
+![gif1](https://github.com/Just-Doing/yltui/blob/master/packages/sharewinfo-ui/img/panel.gif)
+
 ## 排版
 
 以上 json 表示 一个 2 列 左右分布的表单，左右各占 50% 的宽度, 其中 col - span 12 / 24 \* 100 计算的宽度占比， 按照数组的项数依次版本，每行固定显示 24 个 span，超过 24 换行处理，如果排版上有要求，可以试用空 col 指定宽度来灵活调整

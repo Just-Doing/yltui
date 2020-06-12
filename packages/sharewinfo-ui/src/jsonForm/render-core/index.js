@@ -1,3 +1,4 @@
+import panels from './panels';
 import checkbox from './checkbox';
 import file from './file';
 import hidden from './hidden';
@@ -18,6 +19,7 @@ import color from './color';
 import colorGroup from './colorGroup';
 
 export {
+  panels,
   checkbox,
   file,
   hidden,
