@@ -41,7 +41,8 @@ export default option => {
     colorPlus.onclick = function() {
       const colorPlusOpt = { name: option.name };
       if (changeEvent) colorPlusOpt.fieldChange = changeEvent;
-      const colorBox = color(colorPlusOpt, '#fff');
+      colorPlusOpt.value = '#fff';
+      const colorBox = color(colorPlusOpt);
 
       colorListWaper.appendChild(colorBox);
       colorListWaper.appendChild(colorBox);

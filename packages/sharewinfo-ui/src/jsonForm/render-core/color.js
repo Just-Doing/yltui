@@ -132,6 +132,7 @@ export default option => {
     const colorBarPoint = document.querySelector('.color-bar-porint');
     const colorOk = document.querySelector('.color-ok');
     const colorInput = document.querySelector('#color-input');
+    colorInput.value = option.value || '#ffffff'; // 设置默认值
 
     colorOk.onclick = removeColorPick;
     var clorRail = 0;
