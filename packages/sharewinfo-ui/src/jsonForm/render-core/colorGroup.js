@@ -10,7 +10,7 @@ export default option => {
       var colorGroup = document.getElementsByName(option.name);
       var color_val = [];
       for (var i = 0; i < colorGroup.length; i++) {
-        color_val.push(colorGroup[i].style.backgroundColor);
+        colorGroup[i].style.backgroundColor && color_val.push(colorGroup[i].style.backgroundColor);
       }
       option.fieldChange({ [option.name]: color_val });
     };
