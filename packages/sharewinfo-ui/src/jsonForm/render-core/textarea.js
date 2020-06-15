@@ -1,7 +1,14 @@
-export default option => {
+import { controlWithLabel } from '../render-utils';
+
+export default (option) => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
-  const control = document.createElement('textarea');
-  control.setAttribute('name', option.name);
-  control.setAttribute('value', option.value);
-  return control;
+  const textBox = document.createElement('textarea');
+  textBox.setAttribute('style', 'width: calc(100% - 8px);height:150px');
+  textBox.setAttribute('type', 'text');
+  textBox.setAttribute('name', option.name);
+  textBox.setAttribute('value', option.value || '');
+  if (option.fieldChange) {
+    textBox.onchange = (e) => option.fieldChange({ [option.name]: e.target.value });
+  }
+  return controlWithLabel(option.label, option.waper, textBox);
 };

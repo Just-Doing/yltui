@@ -6,7 +6,7 @@ import hidden from './hidden';
 import image from './image';
 import option from './option';
 import password from './password';
-import redio from './radio';
+import radio from './radio';
 import reset from './reset';
 import select from './select';
 import submit from './submit';
@@ -28,13 +28,13 @@ export {
   image,
   option,
   password,
-  redio,
   reset,
   select,
   submit,
   textbox,
   textarea,
   checkboxGroup,
+  radio,
   radioGroup,
   col,
   text,
