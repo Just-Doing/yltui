@@ -13,6 +13,7 @@ export default option => {
   input.setAttribute('name', option.name);
   input.setAttribute('id', option.id);
   input.setAttribute('value', option.value);
+  console.log(option.checked);
   option.checked && input.setAttribute('checked', 'checked');
   if (option.fieldChange) {
     input.onchange = e => option.fieldChange({ [option.name]: e.target.checked });
