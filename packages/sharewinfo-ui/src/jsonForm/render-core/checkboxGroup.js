@@ -22,7 +22,8 @@ export default option => {
   (option.items || []).forEach(opt => {
     opt.name = option.name;
     if (changeEvent) opt.fieldChange = changeEvent;
-    const checkboxOption = checkbox(opt, opt.value === option.value);
+    opt.checked = opt.value === option.value;
+    const checkboxOption = checkbox(opt);
     waper.appendChild(checkboxOption);
   });
   return controlWithLabel(option.label, option.waper, waper);

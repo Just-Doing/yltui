@@ -9,7 +9,8 @@ export default option => {
     select.onchange = e => option.fieldChange({ [option.name]: e.target.value });
   }
   (option.items || []).forEach(opt => {
-    const optControl = createOption(opt, opt.value === option.value);
+    opt.checked = opt.value === option.value;
+    const optControl = createOption(opt);
 
     select.appendChild(optControl);
   });

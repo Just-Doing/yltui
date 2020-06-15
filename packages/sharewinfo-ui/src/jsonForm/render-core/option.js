@@ -1,7 +1,7 @@
-export default (opt, checked) => {
+export default opt => {
   const option = document.createElement('option');
   option.setAttribute('value', opt.value);
   option.innerText = opt.text;
-  checked && option.setAttribute('selected', 'selected');
+  option.checked && option.setAttribute('selected', 'selected');
   return option;
 };
