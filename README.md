@@ -1,6 +1,8 @@
 # yltui 是一个前端工具，包含一些和业务无关的公共方法
 
-全局对象 sharewinfo<br />
+## 项目结构
+![project](https://just-doing.github.io/yltui/packages/sharewinfo-ui/img/project.png)
+
 
 <h1 align="center">sharewinfo-ui</h1>
 
@@ -9,6 +11,7 @@
 ```js
 npm install sharewinfo-ui -S 或者 <script type="text/javascript" src='node_modules/sharewinfo-ui/dist/index.js' />
 ```
+全局对象 sharewinfo<br />
 
 ## jsonForm 使用
 
@@ -224,6 +227,7 @@ col | textBox | textarea(待开发) | password(待开发) | text | select | imag
 ```js
 npm install sharewinfo-utils -S 或者 <script type="text/javascript" src='node_modules/sharewinfo-utils/dist/index.js' />
 ```
+全局对象 sharewinfo<br />
 
 ### data
 
