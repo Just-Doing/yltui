@@ -132,6 +132,7 @@ export default option => {
     const colorBarPoint = document.querySelector('.color-bar-porint');
     const colorOk = document.querySelector('.color-ok');
     const colorInput = document.querySelector('#color-input');
+
     colorOk.onclick = removeColorPick;
     var clorRail = 0;
 
