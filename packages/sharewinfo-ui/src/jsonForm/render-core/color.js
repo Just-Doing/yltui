@@ -116,14 +116,14 @@ export default option => {
         if (colorInput) option.fieldChange({ [option.name]: colorInput.value });
       }
       colorPickWindow.remove();
+      document.body.removeEventListener('click', removeColorPick);
     }
   };
-  document.body.removeEventListener('click', removeColorPick);
-  document.body.addEventListener('click', removeColorPick);
   option.name && colorPick.setAttribute('name', option.name);
   colorPick.setAttribute('class', 'colorbox');
   colorPick.setAttribute('style', 'background-color: ' + option.value || '#fff');
   colorPick.onclick = function(e) {
+    document.body.addEventListener('click', removeColorPick);
     colorPickWindow.innerHTML = styleTemp(e.pageY, e.pageX) + htmlTemp;
     document.body.appendChild(colorPickWindow);
     const colorBord = document.querySelector('.color-bord');
@@ -170,5 +170,6 @@ export default option => {
       colorBar.removeEventListener('mousemove', colorbarMove);
     };
   };
+
   return controlWithLabel(option.label, option.waper, colorPick);
 };
