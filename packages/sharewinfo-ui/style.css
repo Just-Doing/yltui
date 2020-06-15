@@ -34,6 +34,7 @@
 .panel {
   border: solid 1px #cbcbcb;
   border-radius: 2px;
+  margin-top: 5px;
 }
 
 .panel-header {
@@ -61,4 +62,28 @@
 }
 .panel-body-content {
   padding: 10px;
+}
+
+.color-plus,
+.color-reduce {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #cbcbcb;
+  border-radius: 50%;
+  line-height: 16px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.color-reduce {
+  margin-left: 5px;
+}
+.color-plus:hover,
+.color-reduce:hover {
+  background-color: #a5caff;
+  color: #fff;
 }
