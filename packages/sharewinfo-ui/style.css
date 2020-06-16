@@ -11,11 +11,14 @@
 }
 
 .checkbox-waper,
-.checkbox-label-waper {
+.checkbox-label-waper,
+.radio-waper,
+.radio-label-waper {
   display: inline-block;
   white-space: nowrap;
 }
-.checkbox-list {
+.checkbox-list,
+.radio-list {
   display: flex;
 }
 .color-bord {
