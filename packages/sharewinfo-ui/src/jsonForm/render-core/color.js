@@ -1,95 +1,22 @@
-import { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex } from '../render-utils';
+import { controlWithLabel, hsv2rgb, rgb2hex, rgb2hsv } from '../render-utils';
 
 export default option => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
+  const colorBordWidth = 100,
+    colorBordHeight = 100,
+    colorBarHeight = 100;
 
   const styleTemp = (top, left) => `<style>
-.colorpick {
-  width: 118px;
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: ${top}px;
-  left: ${left}px;
-  flex-wrap: wrap;
-}
-.color-bord {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border: solid 1px #cbcbcb;
-  border-radius: 3px 0 0 3px;
-}
-.color-bord::after,
-.color-bord::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.color-bord::before {
-  background: linear-gradient(to right, white, transparent);
-}
-
-.color-bord::after {
-  background: linear-gradient(to top, black, transparent);
-}
-
-.color-bar {
-  width: 15px;
-  height: 100px;
-  border: solid 1px #cbcbcb;
-  border-left: none;
-  border-radius: 0 3px 3px 0;
-  background: linear-gradient(
-    to top,
-    #f00 0%,
-    #ff0 16.66%,
-    #0f0 33.33%,
-    #0ff 50%,
-    #00f 66.66%,
-    #f0f 83.33%,
-    #f00 100%
-  );
-}
-.color-bar-porint {
-  width: 15px;
-  height: 3px;
-  border-top: solid 1px #fff;
-  border-bottom: solid 1px #fff;
-  background-color: #fff;
-  opacity: 0.8;
-  position: relative;
-  top: 50px;
-}
-.color-point {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: #fff;
-  position: absolute;
-  bottom: 50px;
-  z-index: 1;
-}
-#color-input{
-  width: 70px;
-}
-.color-ok{
-  width: 35px;
-  height: 20px;
-  border: solid 1px #cbcbcb;
-  border-radius: 3px;
-  background: #193964;
-  color: #fff;    
-  text-align: center;
-  margin: 2px 0 0 2px;
-  line-height: 20px;
-  cursor: pointer;
-}
-</style>`;
+  .colorpick {
+    width: 118px;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: ${top}px;
+    left: ${left}px;
+    flex-wrap: wrap;
+  }
+  </style>`;
 
   const htmlTemp = `<div class="colorpick">
                       <div class="color-bord" style="background-color: hsl(360, 100%, 50%);">
@@ -132,7 +59,22 @@ export default option => {
     const colorBarPoint = document.querySelector('.color-bar-porint');
     const colorOk = document.querySelector('.color-ok');
     const colorInput = document.querySelector('#color-input');
-    colorInput.value = option.value || '#ffffff'; // 设置默认值
+    const colorValue = colorPick.style.backgroundColor; // 这里是rgb值
+    if (colorValue) {
+      // 回选颜色
+      const rgbValue = /rgb\((\d*),(\d*),(\d*)\)/.exec(colorValue);
+      const r = rgbValue[1],
+        g = rgbValue[2],
+        b = rgbValue[3];
+      const hsv = rgb2hsv(r, g, b);
+      const colorBarPointY = colorBar.offsetParent.offsetTop + colorBarHeight - (hsv.h / 360) * colorBarHeight;
+      colorBarPoint.style.top = `${colorBarPointY}px`;
+      const colorPointX = Math.round(hsv.s * colorBordWidth) + colorBord.offsetParent.offsetLeft;
+      const colorPointY = Math.round(hsv.v * colorBordHeight) + colorBord.offsetParent.offsetTop;
+      colorPoint.style.top = `${colorPointY}px`;
+      colorPoint.style.left = `${colorPointX}px`;
+      colorInput.value = rgb2hex(r, g, b); // 设置默认值
+    }
 
     colorOk.onclick = removeColorPick;
     var clorRail = 0;
@@ -141,21 +83,20 @@ export default option => {
       let disx = e.pageX - colorBord.offsetParent.offsetLeft;
       let disy = e.pageY - colorBord.offsetParent.offsetTop;
       colorPoint.setAttribute('style', 'top:' + disy + 'px;left: ' + disx + 'px');
-      const colorBarWidth = 100,
-        colorBarHeight = 100;
-      const hue = Math.round((disx / colorBarWidth) * 100) / 100;
-      const light = Math.round((1 - disy / colorBarHeight) * 100) / 100;
-      const rgb = hsv2rgb(clorRail, hue, light);
+      const s = Math.round((disx / colorBordWidth) * 100) / 100;
+      const v = Math.round((1 - disy / colorBordHeight) * 100) / 100;
+
+      const rgb = hsv2rgb(clorRail, s, v);
       const hex = rgb2hex(rgb.r, rgb.g, rgb.b);
       colorInput.value = hex;
       colorPick.setAttribute('style', 'background-color: ' + hex + ';');
     }
+
     function colorbarMove(e) {
       let disy = e.pageY - colorBar.offsetParent.offsetTop;
       colorBarPoint.setAttribute('style', 'top:' + disy + 'px;');
-      const colorBarHeight = 100;
-      clorRail = ((100 - disy) / colorBarHeight) * 360;
-      colorBord.setAttribute('style', 'background-color: hsl(' + clorRail + ', 100%, 50%);');
+      clorRail = ((colorBarHeight - disy) / colorBarHeight) * 360; // 色相 计算
+      colorBord.setAttribute('style', 'background-color: hsl(' + clorRail + ', 100%, 50%);'); // 色相设置取色版 背景色
     }
     colorBord.onclick = colorbordMove;
     colorBord.onmousedown = function() {

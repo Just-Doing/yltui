@@ -108,5 +108,43 @@ const rgb2hex = (r, g, b) => {
   });
   return color;
 };
+const parseAlpha = a => (a !== void 0 && !isNaN(+a) && 0 <= +a && +a <= 1 ? +a : 1);
 
-export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex };
+const rgb2hsv = (r, g, b, a) => {
+  r = boundValue(r, 255);
+  g = boundValue(g, 255);
+  b = boundValue(b, 255);
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h, s;
+  let v = max;
+
+  const d = max - min;
+  s = max === 0 ? 0 : d / max;
+
+  if (max === min) {
+    h = 0;
+  } else {
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+
+  return {
+    h: h * 360,
+    s: s,
+    v: v,
+    a: parseAlpha(a),
+  };
+};
+
+export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, rgb2hsv };
