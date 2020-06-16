@@ -21,6 +21,16 @@
 .radio-list {
   display: flex;
 }
+.colorpick {
+  width: 118px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  flex-wrap: wrap;
+  background: #c5c6e2;
+  border-radius: 3px;
+  padding: 2px;
+}
 .color-bord {
   position: relative;
   width: 100px;
@@ -60,7 +70,6 @@
   border-top: solid 1px #fff;
   border-bottom: solid 1px #fff;
   background-color: #fff;
-  opacity: 0.8;
   position: relative;
 }
 .color-point {

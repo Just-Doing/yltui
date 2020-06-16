@@ -6,19 +6,7 @@ export default option => {
     colorBordHeight = 100,
     colorBarHeight = 100;
 
-  const styleTemp = (top, left) => `<style>
-  .colorpick {
-    width: 118px;
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: ${top}px;
-    left: ${left}px;
-    flex-wrap: wrap;
-  }
-  </style>`;
-
-  const htmlTemp = `<div class="colorpick">
+  const htmlTemp = (top, left) => `<div class="colorpick" style=" top: ${top}px; left: ${left}px;">
                       <div class="color-bord" style="background-color: hsl(360, 100%, 50%);">
                         <div class="color-point"></div>
                       </div>
@@ -51,7 +39,7 @@ export default option => {
   colorPick.setAttribute('style', 'background-color: ' + option.value || '#fff');
   colorPick.onclick = function(e) {
     document.body.addEventListener('click', removeColorPick);
-    colorPickWindow.innerHTML = styleTemp(e.pageY, e.pageX) + htmlTemp;
+    colorPickWindow.innerHTML = htmlTemp(e.pageY, e.pageX);
     document.body.appendChild(colorPickWindow);
     const colorBord = document.querySelector('.color-bord');
     const colorBar = document.querySelector('.color-bar');
@@ -87,6 +75,7 @@ export default option => {
       const hex = rgb2hex(rgb.r, rgb.g, rgb.b);
       colorInput.value = hex;
       colorPick.setAttribute('style', 'background-color: ' + hex + ';');
+      // colorPickWindow.firstChild.style.backgroundColor = hex; // 设置取色器背景颜色
     }
 
     function colorbordMove(e) {
