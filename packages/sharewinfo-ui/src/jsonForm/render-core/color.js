@@ -60,44 +60,52 @@ export default option => {
     const colorOk = document.querySelector('.color-ok');
     const colorInput = document.querySelector('#color-input');
     const colorValue = colorPick.style.backgroundColor; // 这里是rgb值
+    let hsv = { h: 255, s: 255, v: 255 };
+
     if (colorValue) {
       // 回选颜色
       const rgbValue = /rgb\((\d*), (\d*), (\d*)\)/.exec(colorValue);
       const r = rgbValue[1],
         g = rgbValue[2],
         b = rgbValue[3];
-      const hsv = rgb2hsv(r, g, b);
+      hsv = rgb2hsv(r, g, b);
       const colorBarPointY = colorBarHeight - (hsv.h / 360) * colorBarHeight;
       colorBarPoint.style.top = `${colorBarPointY}px`;
       const colorPointX = Math.round(hsv.s * colorBordWidth);
       const colorPointY = Math.round((1 - hsv.v) * colorBordHeight);
       colorPoint.style.top = `${colorPointY}px`;
       colorPoint.style.left = `${colorPointX}px`;
-      colorInput.value = rgb2hex(r, g, b); // 设置默认值
+
+      colorInput.value = rgb2hex(parseInt(r), parseInt(g), parseInt(b)); // 设置默认值
+      colorBord.setAttribute('style', 'background-color: hsl(' + hsv.h + ', 100%, 50%);'); // 色相设置取色版 背景色
     }
 
     colorOk.onclick = removeColorPick;
-    var clorRail = 0;
 
-    function colorbordMove(e) {
-      let disx = e.pageX - colorBord.offsetParent.offsetLeft;
-      let disy = e.pageY - colorBord.offsetParent.offsetTop;
-      colorPoint.setAttribute('style', 'top:' + disy + 'px;left: ' + disx + 'px');
-      const s = Math.round((disx / colorBordWidth) * 100) / 100;
-      const v = Math.round((1 - disy / colorBordHeight) * 100) / 100;
-
-      const rgb = hsv2rgb(clorRail, s, v);
+    function setColor2Pick() {
+      const rgb = hsv2rgb(hsv.h, hsv.s, hsv.v);
       const hex = rgb2hex(rgb.r, rgb.g, rgb.b);
       colorInput.value = hex;
       colorPick.setAttribute('style', 'background-color: ' + hex + ';');
     }
 
+    function colorbordMove(e) {
+      let disx = e.pageX - colorBord.offsetParent.offsetLeft;
+      let disy = e.pageY - colorBord.offsetParent.offsetTop;
+      colorPoint.setAttribute('style', 'top:' + disy + 'px;left: ' + disx + 'px');
+      hsv.s = Math.round((disx / colorBordWidth) * 100) / 100;
+      hsv.v = Math.round((1 - disy / colorBordHeight) * 100) / 100;
+      setColor2Pick();
+    }
+
     function colorbarMove(e) {
       let disy = e.pageY - colorBar.offsetParent.offsetTop;
       colorBarPoint.setAttribute('style', 'top:' + disy + 'px;');
-      clorRail = ((colorBarHeight - disy) / colorBarHeight) * 360; // 色相 计算
-      colorBord.setAttribute('style', 'background-color: hsl(' + clorRail + ', 100%, 50%);'); // 色相设置取色版 背景色
+      hsv.h = ((colorBarHeight - disy) / colorBarHeight) * 360; // 色相 计算
+      colorBord.setAttribute('style', 'background-color: hsl(' + hsv.h + ', 100%, 50%);'); // 色相设置取色版 背景色
+      setColor2Pick();
     }
+
     colorBord.onclick = colorbordMove;
     colorBord.onmousedown = function() {
       colorBord.addEventListener('mousemove', colorbordMove);
