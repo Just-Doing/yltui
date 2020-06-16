@@ -62,15 +62,15 @@ export default option => {
     const colorValue = colorPick.style.backgroundColor; // 这里是rgb值
     if (colorValue) {
       // 回选颜色
-      const rgbValue = /rgb\((\d*),(\d*),(\d*)\)/.exec(colorValue);
+      const rgbValue = /rgb\((\d*), (\d*), (\d*)\)/.exec(colorValue);
       const r = rgbValue[1],
         g = rgbValue[2],
         b = rgbValue[3];
       const hsv = rgb2hsv(r, g, b);
-      const colorBarPointY = colorBar.offsetParent.offsetTop + colorBarHeight - (hsv.h / 360) * colorBarHeight;
+      const colorBarPointY = colorBarHeight - (hsv.h / 360) * colorBarHeight;
       colorBarPoint.style.top = `${colorBarPointY}px`;
-      const colorPointX = Math.round(hsv.s * colorBordWidth) + colorBord.offsetParent.offsetLeft;
-      const colorPointY = Math.round(hsv.v * colorBordHeight) + colorBord.offsetParent.offsetTop;
+      const colorPointX = Math.round(hsv.s * colorBordWidth);
+      const colorPointY = Math.round((1 - hsv.v) * colorBordHeight);
       colorPoint.style.top = `${colorPointY}px`;
       colorPoint.style.left = `${colorPointX}px`;
       colorInput.value = rgb2hex(r, g, b); // 设置默认值
