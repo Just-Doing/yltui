@@ -20,6 +20,7 @@
 .checkbox-list,
 .radio-list {
   display: flex;
+  flex-wrap: wrap;
 }
 .colorpick {
   width: 118px;
