@@ -75,7 +75,6 @@ export default option => {
       const hex = rgb2hex(rgb.r, rgb.g, rgb.b);
       colorInput.value = hex;
       colorPick.setAttribute('style', 'background-color: ' + hex + ';');
-      // colorPickWindow.firstChild.style.backgroundColor = hex; // 设置取色器背景颜色
     }
 
     function colorbordMove(e) {
