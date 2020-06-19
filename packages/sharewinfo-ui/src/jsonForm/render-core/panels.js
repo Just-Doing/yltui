@@ -16,7 +16,7 @@ export default option => {
     `;
 
   const panelBody = document.createElement('div');
-  panelBody.setAttribute('class', 'panel-body');
+  panelBody.setAttribute('class', 'panel-body panel-expaned');
   // panel - body - content  三层嵌套 为了做样式和header 事件控制
   const panelBodyContent = document.createElement('div');
   panelBodyContent.setAttribute('class', 'panel-body-content');
