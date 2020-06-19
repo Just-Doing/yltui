@@ -1,6 +1,6 @@
 import { controlWithLabel } from '../render-utils';
 
-export default (option) => {
+export default option => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
   const labelWaper = document.createElement('label');
   labelWaper.setAttribute('class', 'radio-label-waper');
@@ -15,7 +15,7 @@ export default (option) => {
   input.setAttribute('value', option.value);
   option.checked && input.setAttribute('checked', 'checked');
   if (option.fieldChange) {
-    input.onchange = (e) => option.fieldChange({ [option.name]: e.target.checked });
+    input.onchange = e => option.fieldChange({ [option.name]: e.target.checked });
   }
   const label = document.createElement('span');
   label.innerText = option.text || '';

@@ -53,6 +53,7 @@ function render(dom, json, fieldChange) {
         switch (formDataType[keyName]) {
           case 'textbox':
           case 'select':
+          case 'radioGroup':
             formData[keyName] = document.getElementsByName(keyName)[0].value;
             break;
           case 'checkbox':

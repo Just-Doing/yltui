@@ -22,7 +22,7 @@ export default option => {
   (option.items || []).forEach(opt => {
     opt.name = option.name;
     if (changeEvent) opt.fieldChange = changeEvent;
-    opt.checked = opt.value === option.value;
+    opt.checked = opt.value === option.value[0];
     const radioOption = radio(opt);
     waper.appendChild(radioOption);
   });

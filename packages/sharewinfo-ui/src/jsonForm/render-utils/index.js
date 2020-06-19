@@ -162,6 +162,7 @@ const setFiledValue = fieldData => {
         document.getElementsByName(keyName)[0].checked = fieldData[keyName].value;
         break;
       case 'checkboxGroup':
+      case 'radioGroup':
         var checkboxGroup = document.getElementsByName(keyName);
         var check_val = fieldData[keyName].value;
         for (var i = 0; i < checkboxGroup.length; i++) {
