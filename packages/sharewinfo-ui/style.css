@@ -168,3 +168,16 @@
   background-color: #a5caff;
   color: #fff;
 }
+
+.input-unit {
+  position: absolute;
+  display: inline-block;
+  height: 16px;
+  right: 15px;
+  background: #fff;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.input-with-unit {
+  position: relative;
+}
