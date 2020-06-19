@@ -23,7 +23,7 @@ export default option => {
 
   const setDefault = document.createElement('span');
   setDefault.setAttribute('class', 'back-default');
-  setDefault.innerText = '恢复默认值';
+  setDefault.innerText = '还原为默认值';
   setDefault.onclick = function() {
     setFiledValue(panel.body.defaultValue);
   };
