@@ -37,6 +37,7 @@ export default option => {
   option.name && colorPick.setAttribute('name', option.name);
   colorPick.setAttribute('class', 'colorbox');
   colorPick.setAttribute('style', 'background-color: ' + option.value || '#fff');
+
   colorPick.onclick = function(e) {
     document.body.addEventListener('click', removeColorPick);
     colorPickWindow.innerHTML = htmlTemp(e.pageY, e.pageX);

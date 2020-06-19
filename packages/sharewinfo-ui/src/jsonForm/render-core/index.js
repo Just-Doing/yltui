@@ -1,6 +1,6 @@
 import panels from './panels';
 import checkbox from './checkbox';
-import integer from './integer';
+import number from './number';
 import file from './file';
 import hidden from './hidden';
 import image from './image';
@@ -21,7 +21,7 @@ import colorGroup from './colorGroup';
 
 export {
   panels,
-  integer,
+  number,
   checkbox,
   file,
   hidden,

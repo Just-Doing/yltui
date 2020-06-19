@@ -6,7 +6,8 @@
 
 .label-waper {
   text-align: right;
-  padding-right: 10px;
+  padding-right: 5px;
+  font-size: 12px;
 }
 
 .checkbox-waper,
@@ -15,6 +16,7 @@
 .radio-label-waper {
   display: inline-block;
   white-space: nowrap;
+  font-size: 12px;
 }
 .checkbox-list,
 .radio-list {
@@ -117,8 +119,8 @@
 }
 
 .panel-header {
-  height: 35px;
-  line-height: 35px;
+  height: 30px;
+  line-height: 30px;
   width: 100%;
   font-size: 12px;
   border-bottom: solid 1px #cbcbcb;
