@@ -22,7 +22,7 @@ export default option => {
   (option.items || []).forEach(opt => {
     opt.name = option.name;
     if (changeEvent) opt.fieldChange = changeEvent;
-    opt.checked = opt.value === option.value;
+    if (option.value) opt.checked = option.value.indexOf(opt.value) > -1;
     const checkboxOption = checkbox(opt);
     waper.appendChild(checkboxOption);
   });

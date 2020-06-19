@@ -1,4 +1,4 @@
-import { controlWithLabel } from '../render-utils';
+import { setFiledValue } from '../render-utils';
 
 export default option => {
   if (!option.text) throw 'panel 必须请提供text';
@@ -17,9 +17,18 @@ export default option => {
 
   const panelBody = document.createElement('div');
   panelBody.setAttribute('class', 'panel-body panel-expaned');
-  // panel - body - content  三层嵌套 为了做样式和header 事件控制
+  // panel -> body -> content  三层嵌套 为了做样式和header 事件控制
   const panelBodyContent = document.createElement('div');
   panelBodyContent.setAttribute('class', 'panel-body-content');
+
+  const setDefault = document.createElement('span');
+  setDefault.setAttribute('class', 'back-default');
+  setDefault.innerText = '恢复默认值';
+  setDefault.onclick = function() {
+    setFiledValue(panel.body.defaultValue);
+  };
+
+  panelBodyContent.appendChild(setDefault);
 
   panelBody.appendChild(panelBodyContent);
 

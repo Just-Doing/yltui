@@ -19,12 +19,20 @@ function recursionRender(dom, json, fieldChange, formData) {
     const control = createControl({ ...o, fieldChange });
     if (o.child && o.child.length) {
       if (o.type === 'panels') {
+        control.body.defaultValue = {};
         recursionRender(control.body, o.child, fieldChange, formData);
       } else {
         recursionRender(control, o.child, fieldChange, formData);
       }
     }
-    if (o.name) formData[o.name] = o.type;
+    if (o.name) {
+      formData[o.name] = o.type;
+      if (dom.defaultValue)
+        dom.defaultValue[o.name] = {
+          controlType: o.type,
+          value: o.value,
+        }; // 如果父元素是panel 需要加子元素默认值记录到 父类上
+    }
     dom.appendChild(control);
   });
 }
@@ -32,7 +40,7 @@ function recursionRender(dom, json, fieldChange, formData) {
 function render(dom, json, fieldChange) {
   const root = rootElement();
 
-  const formDataType = {};
+  const formDataType = {}; //用来保存所有 字段和控件类型的对应 {field1: 'textbox'},在更具 name 和 控件类型， 读取字段值，
   recursionRender(root, json, fieldChange, formDataType);
 
   dom.appendChild(root);

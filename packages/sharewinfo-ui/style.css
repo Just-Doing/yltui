@@ -143,6 +143,7 @@
 }
 .panel-body-content {
   padding: 10px;
+  position: relative;
 }
 
 .color-plus,
@@ -180,4 +181,11 @@
 }
 .input-with-unit {
   position: relative;
+}
+.back-default {
+  position: absolute;
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+  cursor: pointer;
 }

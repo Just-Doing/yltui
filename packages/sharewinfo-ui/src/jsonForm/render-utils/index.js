@@ -147,4 +147,39 @@ const rgb2hsv = (r, g, b, a) => {
   };
 };
 
-export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, rgb2hsv };
+const setFiledValue = fieldData => {
+  const objKeys = Object.keys(fieldData);
+  for (var keyIndex = 0; keyIndex < objKeys.length; keyIndex++) {
+    const keyName = objKeys[keyIndex];
+    switch (
+      fieldData[keyName].controlType // 按照控件类型 赋值
+    ) {
+      case 'textbox':
+      case 'select':
+        document.getElementsByName(keyName)[0].value = fieldData[keyName].value;
+        break;
+      case 'checkbox':
+        document.getElementsByName(keyName)[0].checked = fieldData[keyName].value;
+        break;
+      case 'checkboxGroup':
+        var checkboxGroup = document.getElementsByName(keyName);
+        var check_val = fieldData[keyName].value;
+        for (var i = 0; i < checkboxGroup.length; i++) {
+          checkboxGroup[i].checked = check_val.indexOf(checkboxGroup[i].value) > -1;
+        }
+        break;
+      case 'color':
+        document.getElementsByName(keyName)[0].style.backgroundColor = fieldData[keyName].value;
+        break;
+      case 'colorGroup':
+        var colorGroup = document.getElementsByName(keyName);
+        var color_val = fieldData[keyName].value;
+        for (var i = 0; i < colorGroup.length; i++) {
+          if (color_val.length - 1 > i) colorGroup[i].style.backgroundColor = color_val[i];
+        }
+        break;
+    }
+  }
+};
+
+export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, rgb2hsv, setFiledValue };
