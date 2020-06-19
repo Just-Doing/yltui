@@ -4,6 +4,7 @@ import createOption from './option';
 export default option => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
   const select = document.createElement('select');
+  select.setAttribute('style', 'width: calc(100% - 2px)');
   select.setAttribute('name', option.name);
   if (option.fieldChange) {
     select.onchange = e => option.fieldChange({ [option.name]: e.target.value });
