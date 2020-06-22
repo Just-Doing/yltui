@@ -24,8 +24,14 @@ export default option => {
   const setDefault = document.createElement('span');
   setDefault.setAttribute('class', 'back-default');
   setDefault.innerText = '还原为默认值';
+
   setDefault.onclick = function() {
-    setFiledValue(panel.body.defaultValue);
+    const { defaultValue } = panel.body;
+    setFiledValue(defaultValue);
+    if (option.fieldChange) {
+      Object.keys(defaultValue).forEach(k => (defaultValue[k] = defaultValue[k].value));
+      option.fieldChange(defaultValue);
+    }
   };
 
   panelBodyContent.appendChild(setDefault);

@@ -175,8 +175,13 @@ const setFiledValue = fieldData => {
       case 'colorGroup':
         var colorGroup = document.getElementsByName(keyName);
         var color_val = fieldData[keyName].value;
-        for (var i = 0; i < colorGroup.length; i++) {
-          if (color_val.length - 1 > i) colorGroup[i].style.backgroundColor = color_val[i];
+
+        for (var i = colorGroup.length - 1; i >= 0; i--) {
+          if (i > color_val.length - 1) {
+            colorGroup[i].parentNode.remove(); // 删除多余的 颜色选择
+          } else {
+            colorGroup[i].style.backgroundColor = color_val[i];
+          }
         }
         break;
     }
