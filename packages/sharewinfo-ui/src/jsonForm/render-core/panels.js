@@ -29,8 +29,9 @@ export default option => {
     const { defaultValue } = panel.body;
     setFiledValue(defaultValue);
     if (option.fieldChange) {
-      Object.keys(defaultValue).forEach(k => (defaultValue[k] = defaultValue[k].value));
-      option.fieldChange(defaultValue);
+      const defaultFieldValue = {};
+      Object.keys(defaultValue).forEach(k => (defaultFieldValue[k] = defaultValue[k].value));
+      option.fieldChange(defaultFieldValue);
     }
   };
 
