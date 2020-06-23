@@ -4,6 +4,7 @@ import * as renderCore from './render-core';
 function rootElement() {
   const root = document.createElement('div');
   root.setAttribute('style', 'width: 100%; display: flex;flex-flow: row wrap');
+  root.setAttribute('class', 'json-form');
   return root;
 }
 

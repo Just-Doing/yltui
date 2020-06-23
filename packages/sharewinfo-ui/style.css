@@ -174,9 +174,9 @@
   position: absolute;
   display: inline-block;
   height: 16px;
-  right: 15px;
+  right: 17px;
   background: #fff;
-  margin-top: 4px;
+  margin-top: 2px;
   font-size: 12px;
 }
 .input-with-unit {
