@@ -155,6 +155,7 @@ const setFiledValue = fieldData => {
       fieldData[keyName].controlType // 按照控件类型 赋值
     ) {
       case 'textbox':
+      case 'number':
       case 'select':
         document.getElementsByName(keyName)[0].value = fieldData[keyName].value;
         break;
