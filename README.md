@@ -186,6 +186,8 @@ const formJson = [
 
 ![gif1](https://just-doing.github.io/yltui/packages/sharewinfo-ui/img/panel.gif)
 
+panel 可还原到默认值
+
 ## color 组件
 
 我们内置颜色选择器， 可指定 type 为 color 单个颜色选择，或者 colorGroup 颜色组 选择
@@ -219,7 +221,7 @@ const formJson = [
 
 ### 4. type 取值
 
-col | textBox | textarea(待开发) | password(待开发) | text | select | image(待开发) | hidden(待开发) | file(待开发) | color | colorGroup | checkbox | checkboxGroup | radio(待开发) | radioGroup(待开发)
+col | textBox | textarea | password(待开发) | text | select | image(待开发) | hidden(待开发) | file(待开发) | color | colorGroup | checkbox | checkboxGroup | radio | radioGroup | number
 
 <h1 align="center">sharewinfo-utils</h1>
 
