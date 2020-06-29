@@ -36,7 +36,7 @@ export default option => {
       );
       htmlTemp += '</div>';
     });
-    // 判断是否支持 localStorage
+    // 如果支持 localstorge 才显示 最近使用的颜色
     if (supportLocalStorage()) {
       let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
       stageColor = stageColor.slice(0, 10);
