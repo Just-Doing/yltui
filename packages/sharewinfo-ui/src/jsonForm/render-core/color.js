@@ -4,7 +4,9 @@ export default option => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
   const colorBordWidth = 100,
     colorBordHeight = 100,
-    colorBarHeight = 100;
+    colorBarHeight = 100,
+    isSupportLocalStorage = supportLocalStorage(),
+    colorSelectHeight = isSupportLocalStorage ? 220 : 180;
 
   const colorPickHtmlTemp = (top, left) => `<div class="colorpick" style=" top: ${top}px; left: ${left}px;">
                       <div class="color-bord" style="background-color: hsl(360, 100%, 50%);">
@@ -27,10 +29,7 @@ export default option => {
   ];
 
   const colorSelectHtmlTemp = (top, left, colorArray) => {
-    const isSupportLocalStorage = supportLocalStorage();
-    let htmlTemp = `<div class="defaultcolor-list"  style="height:${
-      isSupportLocalStorage ? 220 : 180
-    }px; top: ${top}px; left: ${left}px;">
+    let htmlTemp = `<div class="defaultcolor-list"  style="height:${colorSelectHeight}px; top: ${top}px; left: ${left}px;">
                       <div class="defaultcolor-list-title"><div style="margin-left: 15px">主题颜色</div></div>`;
     colorArray.forEach(array => {
       htmlTemp += '<div class="colors">';
@@ -95,11 +94,10 @@ export default option => {
   // 弹出选择颜色窗口
   function showColorSelectWindow(e) {
     var x = e.pageX + 190 > document.body.clientWidth ? e.pageX - 190 : e.pageX;
-    var y = e.pageY + 220 > document.body.clientHeight ? e.pageY - 220 : e.pageY;
+    var y = e.pageY + colorSelectHeight > document.body.clientHeight ? e.pageY - colorSelectHeight : e.pageY;
     colorPickWindow.innerHTML = colorSelectHtmlTemp(y, x, defaultColor);
     document.body.appendChild(colorPickWindow);
 
-    console.log('1111');
     // 绑定 主题颜色的事件
     document.querySelectorAll('.colorSpan').forEach(function(colorSpan) {
       colorSpan.addEventListener('click', function(e) {
