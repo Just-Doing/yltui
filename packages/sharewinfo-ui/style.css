@@ -170,6 +170,47 @@
   color: #fff;
 }
 
+.defaultcolor-list {
+  position: absolute;
+  width: 190px;
+  background-color: #f3f3f3;
+  border-radius: 2px;
+}
+
+.defaultcolor-list-title {
+  width: 100%;
+  line-height: 25px;
+  font-size: 17px;
+  border-bottom: solid 1px #cbcbcb;
+  margin-bottom: 3px;
+}
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.colorSpan {
+  display: inline-flex;
+  width: 15px;
+  height: 15px;
+  margin: 2px;
+  cursor: pointer;
+}
+.colorSpan:hover {
+  border-color: transparent;
+  -webkit-box-shadow: 0 1px 2px -2px #b8d5ff, 0 3px 6px 0 #b8d5ff, 0 5px 12px 4px #b8d5ff;
+  box-shadow: 0 1px 2px -2px #b8d5ff, 0 1px 2px 0 #b8d5ff, 0 1px 2px 2px #b8d5ff;
+}
+
+.customer-color {
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+}
+.customer-color button {
+  width: 98%;
+}
 .input-unit {
   position: absolute;
   display: inline-block;
@@ -182,6 +223,7 @@
 .input-with-unit {
   position: relative;
 }
+
 .back-default {
   position: absolute;
   position: absolute;

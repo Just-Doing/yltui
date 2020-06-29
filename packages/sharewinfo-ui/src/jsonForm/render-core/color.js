@@ -27,7 +27,10 @@ export default option => {
   ];
 
   const colorSelectHtmlTemp = (top, left, colorArray) => {
-    let htmlTemp = `<div class="defaultcolor-list"  style=" top: ${top}px; left: ${left}px;">
+    const isSupportLocalStorage = supportLocalStorage();
+    let htmlTemp = `<div class="defaultcolor-list"  style="height:${
+      isSupportLocalStorage ? 220 : 180
+    }px; top: ${top}px; left: ${left}px;">
                       <div class="defaultcolor-list-title"><div style="margin-left: 15px">主题颜色</div></div>`;
     colorArray.forEach(array => {
       htmlTemp += '<div class="colors">';
@@ -38,7 +41,7 @@ export default option => {
     });
 
     // 如果支持 localstorge 才显示 最近使用的颜色
-    if (supportLocalStorage()) {
+    if (isSupportLocalStorage) {
       let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
       stageColor = stageColor.slice(0, 10);
       // 最近使用的颜色
@@ -93,10 +96,10 @@ export default option => {
   function showColorSelectWindow(e) {
     var x = e.pageX + 190 > document.body.clientWidth ? e.pageX - 190 : e.pageX;
     var y = e.pageY + 220 > document.body.clientHeight ? e.pageY - 220 : e.pageY;
-
     colorPickWindow.innerHTML = colorSelectHtmlTemp(y, x, defaultColor);
     document.body.appendChild(colorPickWindow);
 
+    console.log('1111');
     // 绑定 主题颜色的事件
     document.querySelectorAll('.colorSpan').forEach(function(colorSpan) {
       colorSpan.addEventListener('click', function(e) {
