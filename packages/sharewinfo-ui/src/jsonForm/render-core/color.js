@@ -36,10 +36,10 @@ export default option => {
       );
       htmlTemp += '</div>';
     });
-    let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
-    stageColor = stageColor.slice(0, 10);
     // 判断是否支持 localStorage
     if (supportLocalStorage()) {
+      let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
+      stageColor = stageColor.slice(0, 10);
       // 最近使用的颜色
       htmlTemp += '<div class="defaultcolor-list-title"><div style="margin-left: 15px">最近颜色</div></div>';
       htmlTemp += '<div class="colors">';
