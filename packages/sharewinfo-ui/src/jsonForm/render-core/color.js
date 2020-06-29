@@ -1,4 +1,4 @@
-import { controlWithLabel, hsv2rgb, rgb2hex, rgb2hsv } from '../render-utils';
+import { controlWithLabel, hsv2rgb, rgb2hex, rgb2hsv, supportLocalStorage } from '../render-utils';
 
 export default option => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
@@ -38,13 +38,17 @@ export default option => {
     });
     let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
     stageColor = stageColor.slice(0, 10);
-    // 最近使用的颜色
-    htmlTemp += '<div class="defaultcolor-list-title"><div style="margin-left: 15px">最近颜色</div></div>';
-    htmlTemp += '<div class="colors">';
-    stageColor.forEach(
-      color => (htmlTemp += `<div class="colorSpan" color="${color}" style="background-color: ${color}" ></div>`),
-    );
-    htmlTemp += '</div>';
+    // 判断是否支持 localStorage
+    if (supportLocalStorage()) {
+      // 最近使用的颜色
+      htmlTemp += '<div class="defaultcolor-list-title"><div style="margin-left: 15px">最近颜色</div></div>';
+      htmlTemp += '<div class="colors">';
+      stageColor.forEach(
+        color => (htmlTemp += `<div class="colorSpan" color="${color}" style="background-color: ${color}" ></div>`),
+      );
+      htmlTemp += '</div>';
+    }
+
     // 自定义颜色获取 按钮
     htmlTemp += '<div class="customer-color"><button id="customerColorBtn">自定义颜色</button></div>';
     return htmlTemp + '</div>';
@@ -74,13 +78,14 @@ export default option => {
       option.fieldChange({ [option.name]: color });
     }
     colorPick.setAttribute('style', 'background-color: ' + color);
-    let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
-    // 删除 以前存在的颜色值
-    stageColor.splice(stageColor.indexOf(color), stageColor.indexOf(color) > -1 ? 1 : 0);
-    stageColor = stageColor.slice(0, 10);
-    stageColor.unshift(color);
-
-    window.localStorage.setItem('stageColor', JSON.stringify(stageColor));
+    if (supportLocalStorage()) {
+      let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
+      // 删除 以前存在的颜色值
+      stageColor.splice(stageColor.indexOf(color), stageColor.indexOf(color) > -1 ? 1 : 0);
+      stageColor = stageColor.slice(0, 10);
+      stageColor.unshift(color);
+      window.localStorage.setItem('stageColor', JSON.stringify(stageColor));
+    }
   }
 
   // 弹出选择颜色窗口

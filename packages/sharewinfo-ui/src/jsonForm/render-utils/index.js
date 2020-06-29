@@ -189,4 +189,43 @@ const setFiledValue = fieldData => {
   }
 };
 
-export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, rgb2hsv, setFiledValue };
+function supportLocalStorage() {
+  if (navigator.userAgent.indexOf('UCBrowser') > -1) {
+    return false;
+  }
+  var uaFlag = 0;
+  var uaArr = new Array(
+    'Chrome',
+    'MQQBrowser',
+    'QQ',
+    'TBS',
+    'wxwork',
+    'MicroMessenger',
+    'T7',
+    'baiduboxapp',
+    'baidubrowser',
+    'MiuiBrowser',
+    'NetType',
+    'OPR',
+  );
+  for (var i = 0; i < uaArr.length; i++) {
+    if (navigator.userAgent.indexOf(uaArr[i]) > -1) {
+      uaFlag = 1;
+    }
+  }
+  if (uaFlag != 1) {
+    if (navigator.userAgent.indexOf('HUAWEIEVA') > -1 || navigator.userAgent.indexOf('HUAWEIVTR') > -1) {
+      return false;
+    }
+  }
+  var testKey = 'test';
+  try {
+    window.localStorage.setItem(testKey, 'testValue');
+    window.localStorage.removeItem(testKey);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, rgb2hsv, setFiledValue, supportLocalStorage };
