@@ -18,20 +18,35 @@ export default option => {
                     </div>`;
 
   const defaultColor = [
-    ['#fff', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb'],
-    ['#fff', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb'],
-    ['#fff', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb'],
-    ['#fff', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb'],
-    ['#fff', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb'],
-    ['#fff', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb', '#cbcbcb'],
+    ['#ffffff', '#000000', '#118dff', '#12239e', '#e66c37', '#6b007b', '#e044a7', '#744ec2', '#d9b300', '#d64550'],
+    ['#e6e6e6', '#999999', '#a0d1ff', '#a0a7d8', '#f5c4af', '#c499ca', '#f3b4dc', '#c7b8e7', '#f0e199', '#efb5b9'],
+    ['#CCCCCC', '#666666', '#70BBFF', '#717BC5', '#F0A787', '#A666B0', '#EC8FCA', '#AC95DA', '#E8D166', '#E68F96'],
+    ['#B3B3B3', '#333333', '#41A4FF', '#414FB1', '#EB895F', '#893395', '#E669B9', '#9071CE', '#E1C233', '#DE6A73'],
+    ['#808080', '#1A1A1A', '#0D6ABF', '#0E1A77', '#AD5129', '#50005C', '#A8337D', '#573B92', '#A38600', '#A1343C'],
+    ['#666666', '#000000', '#094780', '#09124F', '#73361C', '#36003E', '#702254', '#3A2761', '#6D5A00', '#6B2328'],
   ];
+
   const colorSelectHtmlTemp = (top, left, colorArray) => {
-    const htmlTemp = `<div class="defaultcolor-list"  style=" top: ${top}px; left: ${left}px;">`;
+    let htmlTemp = `<div class="defaultcolor-list"  style=" top: ${top}px; left: ${left}px;">
+                      <div class="defaultcolor-list-title"><div style="margin-left: 15px">主题颜色</div></div>`;
     colorArray.forEach(array => {
       htmlTemp += '<div class="colors">';
-      array.forEach(color => (htmlTemp += `<div class="colorSpan" style="background-color: ${color}" />`));
+      array.forEach(
+        color => (htmlTemp += `<div class="colorSpan" color="${color}" style="background-color: ${color}" ></div>`),
+      );
       htmlTemp += '</div>';
     });
+    let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
+    stageColor = stageColor.slice(0, 10);
+    // 最近使用的颜色
+    htmlTemp += '<div class="defaultcolor-list-title"><div style="margin-left: 15px">最近颜色</div></div>';
+    htmlTemp += '<div class="colors">';
+    stageColor.forEach(
+      color => (htmlTemp += `<div class="colorSpan" color="${color}" style="background-color: ${color}" ></div>`),
+    );
+    htmlTemp += '</div>';
+    // 自定义颜色获取 按钮
+    htmlTemp += '<div class="customer-color"><button id="customerColorBtn">自定义颜色</button></div>';
     return htmlTemp + '</div>';
   };
 
@@ -42,25 +57,61 @@ export default option => {
       e.target.className != 'colorbox' &&
       e.target.className != 'color-bord' &&
       e.target.className != 'color-bar' &&
-      e.target.id != 'color-input'
+      e.target.id != 'color-input' &&
+      e.target.id != 'customerColorBtn'
     ) {
-      if (option.fieldChange) {
-        const colorInput = document.querySelector('#color-input');
-        if (colorInput) option.fieldChange({ [option.name]: colorInput.value });
+      const colorInput = document.querySelector('#color-input');
+      if (colorInput && colorInput.value) {
+        setColor2Storge(colorInput.value);
       }
       colorPickWindow.remove();
       document.body.removeEventListener('click', removeColorPick);
     }
   };
+
+  function setColor2Storge(color) {
+    if (option.fieldChange) {
+      option.fieldChange({ [option.name]: color });
+    }
+    colorPick.setAttribute('style', 'background-color: ' + color);
+    let stageColor = JSON.parse(window.localStorage.getItem('stageColor') || '[]');
+    // 删除 以前存在的颜色值
+    stageColor.splice(stageColor.indexOf(color), stageColor.indexOf(color) > -1 ? 1 : 0);
+    stageColor = stageColor.slice(0, 10);
+    stageColor.unshift(color);
+
+    window.localStorage.setItem('stageColor', JSON.stringify(stageColor));
+  }
+
   // 弹出选择颜色窗口
   function showColorSelectWindow(e) {
-    colorPickWindow.innerHTML = colorPickHtmlTemp(e.pageY, e.pageX);
+    var x = e.pageX + 190 > document.body.clientWidth ? e.pageX - 190 : e.pageX;
+    var y = e.pageY + 220 > document.body.clientHeight ? e.pageY - 220 : e.pageY;
+
+    colorPickWindow.innerHTML = colorSelectHtmlTemp(y, x, defaultColor);
+    document.body.appendChild(colorPickWindow);
+
+    // 绑定 主题颜色的事件
+    document.querySelectorAll('.colorSpan').forEach(function(colorSpan) {
+      colorSpan.addEventListener('click', function(e) {
+        const color = e.target.getAttribute('color');
+        setColor2Storge(color);
+      });
+    });
+    // 绑定 自定义颜色按钮事件
+    document.getElementById('customerColorBtn').onclick = function() {
+      showColorPickWindow(e);
+    };
+    // 绑定关闭事件
+    document.body.addEventListener('click', removeColorPick);
   }
+
   // 弹出 自定义取色器
   function showColorPickWindow(e) {
-    document.body.addEventListener('click', removeColorPick);
-    colorPickWindow.innerHTML = colorPickHtmlTemp(e.pageY, e.pageX);
-    document.body.appendChild(colorPickWindow);
+    var x = e.pageX + 122 > document.body.clientWidth ? e.pageX - 122 : e.pageX;
+    var y = e.pageY + 130 > document.body.clientHeight ? e.pageY - 130 : e.pageY;
+
+    colorPickWindow.innerHTML = colorPickHtmlTemp(y, x);
     const colorBord = document.querySelector('.color-bord');
     const colorBar = document.querySelector('.color-bar');
     const colorPoint = document.querySelector('.color-point');
@@ -134,7 +185,7 @@ export default option => {
   colorPick.setAttribute('style', 'background-color: ' + option.value || '#fff');
 
   colorPick.onclick = function(e) {
-    showColorPickWindow(e);
+    showColorSelectWindow(e);
   };
 
   return controlWithLabel(option.label, option.waper, colorPick);
