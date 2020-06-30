@@ -14,6 +14,7 @@ import textbox from './textBox';
 import textarea from './textArea';
 import checkboxGroup from './checkboxGroup';
 import radioGroup from './radioGroup';
+import radioblockGroup from './radioblockGroup';
 import col from './col';
 import text from './text';
 import color from './color';
@@ -40,4 +41,5 @@ export {
   text,
   color,
   colorGroup,
+  radioblockGroup,
 };

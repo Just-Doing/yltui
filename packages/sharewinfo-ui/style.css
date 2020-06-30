@@ -24,6 +24,25 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.radio-block-list {
+  display: flex;
+  flex-direction: row;
+}
+.radio-block {
+  margin-left: 5px;
+  color: #ad942d;
+  border-radius: 1px;
+  font-size: 12px;
+  padding: 0 6px 0 3px;
+  cursor: pointer;
+  border: solid 1px #ad942d;
+}
+.radio-block-checked {
+  background-color: #ad942d;
+  color: #fff;
+}
+
 .colorpick {
   width: 118px;
   display: flex;
@@ -173,7 +192,7 @@
 .defaultcolor-list {
   position: absolute;
   width: 190px;
-  background-color: #efd1d1;
+  background-color: #f3f3f3;
   border-radius: 2px;
 }
 
