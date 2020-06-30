@@ -1,6 +1,7 @@
 import { controlWithLabel } from '../render-utils';
 
 export default option => {
+  // 记录下上次选择的值
   let latestCheckedValue = '';
   function createRadioBlock(radioOpt) {
     const radio = document.createElement('div');
@@ -12,10 +13,8 @@ export default option => {
       const checkedValue = e.target.getAttribute('value');
       const allRadio = e.target.parentNode.querySelectorAll(e.target.tagName);
       allRadio.forEach(radio => {
-        radio.removeAttribute('checked');
         radio.classList.remove('radio-block-checked');
       });
-      e.target.setAttribute('checked', 'checked');
       e.target.classList.add('radio-block-checked');
       if (option.fieldChange && latestCheckedValue !== checkedValue) {
         option.fieldChange({ [option.name]: checkedValue });
