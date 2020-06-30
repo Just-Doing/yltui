@@ -170,6 +170,15 @@ const setFiledValue = fieldData => {
           checkboxGroup[i].checked = check_val.indexOf(checkboxGroup[i].value) > -1;
         }
         break;
+      case 'radioblockGroup':
+        var checkboxGroup = document.getElementsByName(keyName);
+        var check_val = fieldData[keyName].value;
+        for (var i = 0; i < checkboxGroup.length; i++) {
+          const value = checkboxGroup[i].getAttribute('value');
+          if (check_val.indexOf(value) > -1) checkboxGroup[i].classList.add('radio-block-checked');
+          else checkboxGroup[i].classList.remove('radio-block-checked');
+        }
+        break;
       case 'color':
         document.getElementsByName(keyName)[0].style.backgroundColor = fieldData[keyName].value;
         break;

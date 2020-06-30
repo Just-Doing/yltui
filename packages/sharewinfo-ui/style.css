@@ -31,15 +31,14 @@
 }
 .radio-block {
   margin-left: 5px;
-  color: #ad942d;
   border-radius: 1px;
   font-size: 12px;
   padding: 0 6px 0 3px;
   cursor: pointer;
-  border: solid 1px #ad942d;
+  border: solid 1px #3279de;
 }
 .radio-block-checked {
-  background-color: #ad942d;
+  background-color: #3279de;
   color: #fff;
 }
 
@@ -192,7 +191,7 @@
 .defaultcolor-list {
   position: absolute;
   width: 190px;
-  background-color: #f3f3f3;
+  background-color: #eae0e0;
   border-radius: 2px;
 }
 

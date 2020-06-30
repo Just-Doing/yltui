@@ -19,6 +19,7 @@ import col from './col';
 import text from './text';
 import color from './color';
 import colorGroup from './colorGroup';
+import toggle from './toggle';
 
 export {
   panels,
@@ -42,4 +43,5 @@ export {
   color,
   colorGroup,
   radioblockGroup,
+  toggle,
 };
