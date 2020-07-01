@@ -53,6 +53,7 @@ function render(dom, json, fieldChange) {
         const keyName = objKeys[keyIndex];
         switch (formDataType[keyName]) {
           case 'textbox':
+          case 'number':
           case 'select':
           case 'radioGroup':
             formData[keyName] = document.getElementsByName(keyName)[0].value;
