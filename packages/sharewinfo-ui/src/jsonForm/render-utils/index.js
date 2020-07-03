@@ -194,6 +194,33 @@ const setFiledValue = fieldData => {
           }
         }
         break;
+      case 'toggle':
+        var controls = document.getElementsByName(keyName)[0];
+        const control1 = controls.childNodes[1];
+        const control2 = controls.childNodes[2];
+        control1.style.display = ''; // 第一组控件 显示
+        control2.style.display = 'none'; // 第二组控件 隐藏
+        let control1DefaultValue = control1.getAttribute('value');
+        control1DefaultValue = control1DefaultValue ? JSON.parse(control1DefaultValue) : '';
+
+        let control2DefaultValue = control2.getAttribute('value');
+        control2DefaultValue = control2DefaultValue ? JSON.parse(control2DefaultValue) : '';
+        const control1Type = control1.getAttribute('controlType');
+        const control2Type = control2.getAttribute('controlType');
+        // 恢复 子控件值
+        setFiledValue({
+          [keyName + '0']: {
+            controlType: control1Type,
+            value: control1DefaultValue,
+          },
+        });
+        setFiledValue({
+          [keyName + '1']: {
+            controlType: control2Type,
+            value: control2DefaultValue,
+          },
+        });
+        break;
     }
   }
 };

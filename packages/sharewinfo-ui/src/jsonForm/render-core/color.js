@@ -187,7 +187,8 @@ export default option => {
       colorBar.removeEventListener('mousemove', colorbarMove);
     };
   }
-  option.name && colorPick.setAttribute('name', option.name);
+  colorPick.setAttribute('name', option.name);
+  colorPick.setAttribute('type', option.type);
   colorPick.setAttribute('class', 'colorbox');
   colorPick.setAttribute('style', 'background-color: ' + option.value || '#fff');
 

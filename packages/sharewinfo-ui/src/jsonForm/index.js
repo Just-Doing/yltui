@@ -86,6 +86,10 @@ function render(dom, json, fieldChange) {
             }
             formData[keyName] = color_val;
             break;
+
+          case 'toggle':
+            formData[keyName] = document.getElementsByName(keyName)[0].getAttribute('value');
+            break;
         }
       }
       return formData;

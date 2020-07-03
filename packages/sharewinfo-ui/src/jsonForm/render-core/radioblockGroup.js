@@ -6,6 +6,7 @@ export default option => {
     radio.setAttribute('class', 'radio-block');
     radioOpt.checked && radio.classList.add('radio-block-checked');
     radio.setAttribute('name', radioOpt.name);
+    radio.setAttribute('type', radioOpt.type);
     radio.setAttribute('value', radioOpt.value || radioOpt.text);
     radio.innerText = radioOpt.text || radioOpt.value;
     radio.onclick = function(e) {
