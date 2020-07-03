@@ -11,7 +11,7 @@ export default option => {
     radio.innerText = radioOpt.text || radioOpt.value;
     radio.onclick = function(e) {
       // 获取当前选择的值
-      let latestCheckedValue = document.querySelector("[name='radioGroup'].radio-block-checked").getAttribute('value');
+      let latestCheckedValue = document.querySelector(`[name='${radioOpt.name}'].radio-block-checked`).getAttribute('value');
       const checkedValue = e.target.getAttribute('value');
       const allRadio = e.target.parentNode.querySelectorAll(e.target.tagName);
       allRadio.forEach(radio => {

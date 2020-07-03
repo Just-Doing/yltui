@@ -59,7 +59,7 @@ function render(dom, json, fieldChange) {
             formData[keyName] = document.getElementsByName(keyName)[0].value;
             break;
           case 'radioblockGroup':
-            const checkRadio = document.querySelector("[name='radioGroup'].radio-block-checked");
+            const checkRadio = document.querySelector(`[name='${keyName}'].radio-block-checked`);
             formData[keyName] = checkRadio ? checkRadio.getAttribute('value') : '';
             break;
           case 'checkbox':
