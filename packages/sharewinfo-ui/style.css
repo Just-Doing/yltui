@@ -19,6 +19,10 @@
   white-space: nowrap;
   font-size: 12px;
 }
+.checkbox-label-waper span,
+.checkbox-label-waper input {
+  vertical-align: middle;
+}
 .checkbox-list,
 .radio-list {
   display: flex;
@@ -28,18 +32,42 @@
 .radio-block-list {
   display: flex;
   flex-direction: row;
+  padding: 3px;
 }
 .radio-block {
+  height: 18px;
   margin-left: 5px;
   border-radius: 1px;
   font-size: 12px;
   padding: 0 6px 0 3px;
   cursor: pointer;
   border: solid 1px #3279de;
+  white-space: nowrap;
 }
 .radio-block-checked {
   background-color: #3279de;
   color: #fff;
+}
+.toggle-list {
+  display: flex;
+  margin-top: -3px;
+}
+.toggle-btn-waper {
+  line-height: 27px;
+}
+.toggle-btn-waper button {
+  height: 20px;
+  border: solid 1px #cbcbcb;
+  border-radius: 3px;
+  background: #0075ff;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.toggle-btn-waper button:active,
+.toggle-btn-waper button:focus {
+  border: solid 1px #cbcbcb;
+  outline: 0;
 }
 
 .colorpick {
@@ -131,23 +159,15 @@
 .color-list .text-waper {
   width: auto;
 }
-.panel {
-  border: solid 1px #cbcbcb;
-  border-radius: 2px;
-}
 
 .panel-header {
   height: 30px;
   line-height: 30px;
   width: 100%;
-  font-size: 12px;
-  border-bottom: solid 1px #cbcbcb;
-  background-color: #fafafa;
+  font-size: 14px;
   cursor: pointer;
 }
-.panel-header span {
-  margin-left: 10px;
-}
+
 .panel-header svg {
   width: 12px;
   height: 12px;
@@ -155,7 +175,6 @@
   transition: all 0.3s;
 }
 .panel-body {
-  border-top: none;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -235,7 +254,7 @@
   height: 16px;
   right: 17px;
   background: #fff;
-  margin-top: 2px;
+  margin-top: 4px;
   font-size: 12px;
 }
 .input-with-unit {
