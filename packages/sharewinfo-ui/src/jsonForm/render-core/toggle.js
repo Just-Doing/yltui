@@ -4,8 +4,7 @@ import { controlWithLabel } from '../render-utils';
 
 export default option => {
   if (!option.name) throw 'json 中必须指定name 属性：' + JSON.stringify(option);
-  if (!option.controls || option.controls.length !== 2)
-    throw 'json 中必须指定controls 长度为2的控件数量：' + JSON.stringify(option);
+  if (!option.controls || option.controls.length !== 2) throw 'json 中必须指定controls 长度为2的控件数量：' + JSON.stringify(option);
 
   const waper = document.createElement('div');
   waper.setAttribute('name', option.name);
@@ -27,13 +26,13 @@ export default option => {
   const firstControl = renderCore[option.controls[0].type](firstOption);
   const secondControl = renderCore[option.controls[1].type](secondOption);
   secondControl.style.display = 'none';
-  firstControl.setAttribute("controlType", firstOption.type)
-  secondControl.setAttribute("controlType", secondOption.type)
+  firstControl.setAttribute('controlType', firstOption.type);
+  secondControl.setAttribute('controlType', secondOption.type);
   firstControl.setAttribute('value', JSON.stringify(firstOption.value || '')); // 记录下第一个控件的 默认值
   secondControl.setAttribute('value', JSON.stringify(secondOption.value || '')); // 记录下第二个控件的 默认值
 
   const toggleBtn = document.createElement('button');
-  toggleBtn.innerText = '切换';
+  toggleBtn.innerText = '自定义';
   toggleBtn.onclick = function() {
     const firstControlVisable = firstControl.style.display;
     const secondControlVisable = secondControl.style.display;
