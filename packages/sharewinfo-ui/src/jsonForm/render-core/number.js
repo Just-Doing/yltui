@@ -4,7 +4,7 @@ export default option => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
 
   const textBox = document.createElement('input');
-  textBox.setAttribute('style', 'width: calc(100% - 8px)');
+  textBox.setAttribute('class', 'jsonform-textbox');
   textBox.setAttribute('type', 'number');
   textBox.setAttribute('name', option.name);
   textBox.setAttribute('value', option.value || '');
