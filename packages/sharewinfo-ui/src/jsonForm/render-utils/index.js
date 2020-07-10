@@ -162,6 +162,12 @@ const setFiledValue = fieldData => {
       case 'checkbox':
         document.getElementsByName(keyName)[0].checked = fieldData[keyName].value;
         break;
+      case 'switchBox':
+        if (fieldData[keyName].value) {
+          var switchBox = document.querySelector(`[name='${keyName}']`);
+          switchBox.classList.add('jsonform-switch-checked');
+        }
+        break;
       case 'checkboxGroup':
       case 'radioGroup':
         var checkboxGroup = document.getElementsByName(keyName);
