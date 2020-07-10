@@ -20,6 +20,8 @@ import text from './text';
 import color from './color';
 import colorGroup from './colorGroup';
 import toggle from './toggle';
+import switchBox from './switchBox';
+import theme from './theme';
 
 export {
   panels,
@@ -44,4 +46,6 @@ export {
   colorGroup,
   radioblockGroup,
   toggle,
+  switchBox,
+  theme,
 };

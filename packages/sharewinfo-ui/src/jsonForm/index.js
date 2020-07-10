@@ -65,6 +65,9 @@ function render(dom, json, fieldChange) {
           case 'checkbox':
             formData[keyName] = document.getElementsByName(keyName)[0].checked;
             break;
+          case 'switchBox':
+            formData[keyName] = document.getElementsByName(keyName)[0].classList.contains('jsonform-switch-checked');
+            break;
           case 'checkboxGroup':
             var checkboxGroup = document.getElementsByName(keyName);
             var check_val = [];
