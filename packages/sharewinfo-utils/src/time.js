@@ -45,7 +45,7 @@ export function getTimeDistance(type) {
 }
 
 // 转换时间 为 yyyy-MM-DD hh:mm:ss
-export const formate = inputDate => {
+export const formate = (inputDate, formateStr = 'yyyy-mm-dd HH:mm:ss') => {
   let time = '';
   if (inputDate) {
     const date = new Date(inputDate);
@@ -54,7 +54,23 @@ export const formate = inputDate => {
     const hours = date.getHours() > 9 ? date.getHours() : `0${date.getHours()}`;
     const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
     const seconds = date.getSeconds() > 9 ? date.getSeconds() : `0${date.getSeconds()}`;
-    time = `${date.getFullYear()}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    switch (formateStr) {
+      case 'yyyy-mm-dd':
+        time = `${date.getFullYear()}-${month}-${day}`;
+        break;
+      case 'HH:mm:ss':
+        time = `${hours}:${minutes}:${seconds}`;
+        break;
+      case 'hh:mm:ss':
+        time = `${hours > 12 ? hours - 12 : hours}:${minutes}:${seconds} ${hours > 12 ? 'PM' : 'AM'}`;
+        break;
+      case 'yyyy-mm-dd hh:mm:ss':
+        time = `${hours}:${minutes}:${seconds} ${hours > 12 ? hours - 12 : hours}:${minutes}:${seconds} ${hours > 12 ? 'PM' : 'AM'}`;
+        break;
+      default:
+        time = `${date.getFullYear()}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        break;
+    }
   }
   return time;
 };

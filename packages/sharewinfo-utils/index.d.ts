@@ -14,7 +14,11 @@ export declare class data {
 }
 
 export declare class time {
-  // 格式化时间 YYYY-MM-dd HH:mm:ss
+  // 格式化时间 默认 yyyy-mm-dd HH:mm:ss
+  //yyyy-mm-dd HH:mm:ss 24小时制
+  //HH:mm:ss 24小时制
+  //yyyy-mm-dd hh:mm:ss 12小时制
+  //yyyy-mm-dd
   static formate: (inputDate: any) => string;
 }
 
