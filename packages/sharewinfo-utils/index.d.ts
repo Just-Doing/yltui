@@ -19,6 +19,7 @@ export declare class time {
   //HH:mm:ss 24小时制
   //yyyy-mm-dd hh:mm:ss 12小时制
   //yyyy-mm-dd
+  //yyyy年mm月dd日
   static formate: (inputDate: any, formateStr: string) => string;
 }
 
