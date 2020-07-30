@@ -19,7 +19,7 @@ export declare class time {
   //HH:mm:ss 24小时制
   //yyyy-mm-dd hh:mm:ss 12小时制
   //yyyy-mm-dd
-  static formate: (inputDate: any) => string;
+  static formate: (inputDate: any, formateStr: string) => string;
 }
 
 export declare class file {
