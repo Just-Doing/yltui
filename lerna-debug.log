@@ -1,5 +1,17 @@
-45 error Error: Command failed: git push --follow-tags --no-verify --atomic origin master
-45 error fatal: unable to access 'https://github.com/Just-Doing/yltui.git/': Failed to connect to github.com port 443: Timed out
-45 error
-45 error     at makeError (D:\git\yltui\node_modules\_execa@1.0.0@execa\index.js:174:9)
-45 error     at D:\git\yltui\node_modules\_execa@1.0.0@execa\index.js:278:16
+47 error Error: Command failed: git push --follow-tags --no-verify --atomic origin master
+47 error fatal: HttpRequestException encountered.
+47 error    ��������ʱ������
+47 error Missing or invalid credentials.
+47 error Error: socket hang up
+47 error     at connResetException (internal/errors.js:559:14)
+47 error     at Socket.socketOnEnd (_http_client.js:433:23)
+47 error     at Socket.emit (events.js:208:15)
+47 error     at endReadableNT (_stream_readable.js:1168:12)
+47 error     at processTicksAndRejections (internal/process/task_queues.js:77:11) {
+47 error   code: 'ECONNRESET'
+47 error }
+47 error remote: No anonymous write access.
+47 error fatal: Authentication failed for 'https://github.com/Just-Doing/yltui.git/'
+47 error
+47 error     at makeError (D:\git\yltui\node_modules\_execa@1.0.0@execa\index.js:174:9)
+47 error     at D:\git\yltui\node_modules\_execa@1.0.0@execa\index.js:278:16

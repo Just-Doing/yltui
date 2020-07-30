@@ -18,7 +18,6 @@ export default option => {
   </svg>`;
 
   (option.items || []).forEach(o => {
-    debugger;
     const option = document.createElement('li');
     option.setAttribute('rel', o.value);
     option.innerHTML = o.text;
