@@ -1,3 +1,15 @@
 {
-  "presets": ["es2015"]
+  "presets": ["es2015"],
+  "plugins": [
+    "@babel/plugin-transform-destructuring",
+    "@babel/plugin-transform-arrow-functions",
+    "@babel/plugin-transform-classes",
+    "@babel/plugin-transform-template-literals",
+    "@babel/plugin-transform-async-to-generator",
+    "@babel/plugin-transform-regenerator",
+    "@babel/plugin-transform-parameters",
+    "@babel/plugin-transform-shorthand-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-spread"
+  ]
 }
