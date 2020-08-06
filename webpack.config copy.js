@@ -10,14 +10,30 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(jsx|js)$/,
-        use: {
-          loader: 'babel-loader',
-        },
-        exclude: /node_modules/,
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015'],
+            },
+          },
+        ],
       },
     ],
   },
+  plugins: [
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        ie8: true,
+        output: {
+          comments: false,
+          beautify: false,
+        },
+        warnings: false,
+      },
+    }),
+  ],
   output: {
     publicPath: '',
     path: path.resolve(__dirname, './packages/'),
