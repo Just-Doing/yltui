@@ -11,6 +11,11 @@ export const UploadFile = function (url, param, cab, errcbk) {
       }
       return res.text();
     })
+    .then((res) => {
+      if (cab) {
+        cab(res);
+      }
+    })
     .catch((error) => {
       if (errcbk) {
         errcbk(error);
