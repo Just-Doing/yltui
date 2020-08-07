@@ -28,7 +28,7 @@
     "url": "https://github.com/Just-Doing/yltui/issues"
   },
   "homepage": "https://github.com/Just-Doing/yltui#readme",
-  "gitHead": "9ce49ed3ed42aa5c5f4312e32f5af9de3aedb021",
+  "gitHead": "8c41962e9196fbb5a4622055a82bd4b12abbc2f2",
   "dependencies": {
     "jsencrypt": "^3.0.0-rc.1",
     "prettier": "^2.0.5"
