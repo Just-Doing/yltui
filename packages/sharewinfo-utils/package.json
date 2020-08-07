@@ -1,6 +1,6 @@
 {
   "name": "sharewinfo-utils",
-  "version": "0.0.76",
+  "version": "0.0.77",
   "description": "sharewinfo-utils",
   "main": "index.js",
   "module": "./src/moment.js",
