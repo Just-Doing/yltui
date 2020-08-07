@@ -29,7 +29,7 @@
     "url": "https://github.com/Just-Doing/yltui/issues"
   },
   "homepage": "https://github.com/Just-Doing/yltui#readme",
-  "gitHead": "a761622447251919de52ae82144235a8832e7184",
+  "gitHead": "9ce49ed3ed42aa5c5f4312e32f5af9de3aedb021",
   "dependencies": {
     "prettier": "^2.0.5"
   }
