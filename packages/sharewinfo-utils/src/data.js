@@ -1,16 +1,3 @@
-// 延迟发起请求，
-export function delayToDo(fun, ms) {
-  if (!fun || !ms || typeof ms !== 'number' || typeof fun !== 'function') {
-    throw new Error('参数错误');
-  }
-  if (window.timer) {
-    clearTimeout(window.timer);
-  }
-  window.timer = setTimeout(() => {
-    fun();
-  }, ms);
-}
-
 // 根据平行数据获取 递归数据
 // [{id:1, pid:0, name:'test1'},{id:2, pid:1, name:'test1'}] => [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]
 export const recursionData = (list, keyName, parentKeyName, rootValue) => {
@@ -76,4 +63,17 @@ export function shallowEqual(objA, objB) {
     }
   }
   return true;
+}
+
+// 延迟发起请求，
+export function delayToDo(fun, ms) {
+  if (!fun || !ms || typeof ms !== 'number' || typeof fun !== 'function') {
+    throw new Error('参数错误');
+  }
+  if (window.timer) {
+    clearTimeout(window.timer);
+  }
+  window.timer = setTimeout(() => {
+    fun();
+  }, ms);
 }
