@@ -373,6 +373,7 @@
   width: 12px;
   height: 12px;
 }
+
 .select-box {
   width: calc(100% - 2px);
   height: 24px;
@@ -386,6 +387,10 @@
   border: solid 1px #40a9ff;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
 ul li {
   list-style: none;
 }
@@ -397,27 +402,6 @@ ul li {
   padding-left: 10px;
   padding-right: 30px;
   cursor: pointer;
-}
-.select-box ul {
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  width: calc(100% - 2px);
-  margin-top: 2px;
-  position: absolute;
-  border-radius: 3px;
-  cursor: pointer;
-  display: none;
-  transition: all 0.3s;
-  z-index: 999;
-}
-.select-box ul li {
-  height: 24px;
-  white-space: nowrap;
-  line-height: 24px;
-  text-indent: 10px;
-}
-.select-box ul li:hover {
-  background-color: #e6f7ff;
 }
 
 .select-box span {
@@ -432,4 +416,27 @@ ul li {
 .select-box svg {
   transition: all 0.3s;
 }
+
+.parentBox ul {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  width: calc(100% - 2px);
+  margin-top: 2px;
+  position: absolute;
+  border-radius: 3px;
+  cursor: pointer;
+  display: none;
+  transition: all 0.3s;
+  z-index: 999;
+}
+.parentBox ul li {
+  height: 24px;
+  white-space: nowrap;
+  line-height: 24px;
+  text-indent: 10px;
+}
+.parentBox ul li:hover {
+  background-color: #e6f7ff;
+}
+
 /*jsonform 控件样式*/

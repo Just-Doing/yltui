@@ -1,14 +1,19 @@
-import { controlWithLabel } from '../render-utils';
-import createOption from './option';
+import { controlWithLabel, getElementLeft, getElementTop } from '../render-utils';
 
-export default option => {
+export default (option) => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
   const select = document.createElement('div');
   select.setAttribute('class', 'select-box');
-  select.setAttribute('id', option.name);
+  select.setAttribute('name', option.name);
+  select.setAttribute('rel', '');
   const selectSerach = document.createElement('p');
   selectSerach.innerHTML = '选择';
-  const droDown = document.createElement('ul');
+  const dropDown = document.createElement('ul');
+
+  //定义一个select下拉框容器
+  const dropBox = document.createElement('div');
+  dropBox.className = 'parentBox';
+  dropBox.appendChild(dropDown);
 
   const icon = document.createElement('span');
   icon.setAttribute('class', 'icon');
@@ -17,28 +22,37 @@ export default option => {
     <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
   </svg>`;
 
-  (option.items || []).forEach(o => {
+  //生成select下拉框的option
+  (option.items || []).forEach((o) => {
+    debugger;
     const option = document.createElement('li');
-    option.setAttribute('rel', o.value);
+    option.setAttribute('rel', o.value || '');
     option.innerHTML = o.text;
-    droDown.appendChild(option);
+    dropDown.appendChild(option);
   });
+
   select.appendChild(selectSerach);
-  select.appendChild(droDown);
+  // select.appendChild(dropDown);
+  document.body.appendChild(dropBox);
+
   select.appendChild(icon);
+  //dropDown的点击事件会触发select的点击事件 所以加一个控制器判断触发次数
   let flag = '';
 
-  droDown.onclick = function(e) {
+  //select下拉框选择事件
+  dropDown.onclick = function (e) {
     if (e.target.tagName.toLowerCase() === 'li') {
       if (option.fieldChange) option.fieldChange({ [option.name]: e.target.getAttribute('rel') });
       selectSerach.innerHTML = e.target.textContent;
+      select.setAttribute('rel', e.target.getAttribute('rel'));
     }
   };
 
+  //显示出select下拉框
   function showDropdown() {
-    console.log(droDown.style.display);
-    if (droDown.style.display !== 'block') {
-      droDown.style.display = 'block';
+    console.log(dropDown.style.display);
+    if (dropDown.style.display !== 'block') {
+      dropDown.style.display = 'block';
       flag = 1;
       icon.childNodes[1].style.transform = 'rotate(180deg)';
 
@@ -46,16 +60,26 @@ export default option => {
     }
   }
 
-  select.onclick = function(e) {
+  //点击select事件
+  select.onclick = function (e) {
+    //给select下拉框添加style以及定位
+    const disx = getElementLeft(select);
+    const disy = getElementTop(select) + select.offsetHeight;
+    const width = select.offsetWidth;
+    console.log('aa', width);
+    dropDown.setAttribute('style', 'width:' + width + 'px');
+    dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');
+
     showDropdown();
   };
 
+  //关闭select下拉框
   function closeOption() {
-    if (droDown.style.display == 'block') {
+    if (dropDown.style.display == 'block') {
       console.log(2);
       flag += 1;
       if (flag === 3) {
-        droDown.style.display = 'none';
+        dropDown.style.display = 'none';
         flag += 1;
         icon.childNodes[1].style.transform = 'rotate(0deg)';
         document.body.removeEventListener('click', closeOption);

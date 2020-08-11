@@ -36,7 +36,7 @@ function boundValue(value, max) {
   return (value % max) / ~~max;
 }
 
-const hsv2hsl = function(h, s, v) {
+const hsv2hsl = function (h, s, v) {
   return {
     h,
     s: (s * v) / ((h = (2 - s) * v) < 1 ? h : 2 - h) || 0,
@@ -88,7 +88,7 @@ const hsv2rgb = (h, s, v) => {
       break;
   }
 
-  const round = value => Math.round(value * 255);
+  const round = (value) => Math.round(value * 255);
 
   return {
     r: round(r),
@@ -99,7 +99,7 @@ const hsv2rgb = (h, s, v) => {
 
 const rgb2hex = (r, g, b) => {
   let color = '#';
-  [r, g, b].forEach(v => {
+  [r, g, b].forEach((v) => {
     let hex = v.toString(16);
     if (hex.length < 2) {
       hex = '0' + hex;
@@ -108,7 +108,7 @@ const rgb2hex = (r, g, b) => {
   });
   return color;
 };
-const parseAlpha = a => (a !== void 0 && !isNaN(+a) && 0 <= +a && +a <= 1 ? +a : 1);
+const parseAlpha = (a) => (a !== void 0 && !isNaN(+a) && 0 <= +a && +a <= 1 ? +a : 1);
 
 const rgb2hsv = (r, g, b, a) => {
   r = boundValue(r, 255);
@@ -147,7 +147,7 @@ const rgb2hsv = (r, g, b, a) => {
   };
 };
 
-const setFiledValue = fieldData => {
+const setFiledValue = (fieldData) => {
   const objKeys = Object.keys(fieldData);
   for (var keyIndex = 0; keyIndex < objKeys.length; keyIndex++) {
     const keyName = objKeys[keyIndex];
@@ -272,4 +272,28 @@ function supportLocalStorage() {
   }
 }
 
-export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, rgb2hsv, setFiledValue, supportLocalStorage };
+function getElementLeft(element) {
+  var actualLeft = element.offsetLeft;
+  var current = element.offsetParent;
+
+  while (current !== null) {
+    actualLeft += current.offsetLeft;
+    current = current.offsetParent;
+  }
+
+  return actualLeft;
+}
+
+function getElementTop(element) {
+  var actualTop = element.offsetTop;
+  var current = element.offsetParent;
+
+  while (current !== null) {
+    actualTop += current.offsetTop;
+    current = current.offsetParent;
+  }
+
+  return actualTop;
+}
+
+export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, getElementLeft, rgb2hsv, setFiledValue, supportLocalStorage, getElementTop };

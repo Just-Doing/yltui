@@ -16,7 +16,7 @@ function createControl(option) {
 // 递归渲染 json
 function recursionRender(dom, json, fieldChange, formData) {
   // json 按行数和列数 计算布局
-  (json || []).forEach(o => {
+  (json || []).forEach((o) => {
     const control = createControl({ ...o, fieldChange });
     if (o.child && o.child.length) {
       if (o.type === 'panels') {
@@ -26,6 +26,7 @@ function recursionRender(dom, json, fieldChange, formData) {
         recursionRender(control, o.child, fieldChange, formData);
       }
     }
+
     if (o.name) {
       formData[o.name] = o.type;
       if (dom.defaultValue)
@@ -54,9 +55,11 @@ function render(dom, json, fieldChange) {
         switch (formDataType[keyName]) {
           case 'textbox':
           case 'number':
-          case 'select':
           case 'radioGroup':
             formData[keyName] = document.getElementsByName(keyName)[0].value;
+            break;
+          case 'select':
+            formData[keyName] = document.getElementsByName(keyName)[0].getAttribute('rel');
             break;
           case 'radioblockGroup':
             const checkRadio = document.querySelector(`[name='${keyName}'].radio-block-checked`);
