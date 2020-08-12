@@ -9,6 +9,7 @@ export default (option) => {
   select.setAttribute('rel', '');
   const selectSerach = document.createElement('p');
   selectSerach.innerHTML = '选择';
+  selectSerach.setAttribute('style', 'font-size:12px;font-weight:normal');
   const dropDown = document.createElement('ul');
 
   //定义一个select下拉框容器
@@ -29,20 +30,23 @@ export default (option) => {
     const selectOption = document.createElement('li');
     selectOption.setAttribute('rel', o.value || '');
     selectOption.innerHTML = o.text;
+    selectOption.setAttribute('style', 'text-align:left');
     dropDown.appendChild(selectOption);
   });
 
   select.appendChild(selectSerach);
   const box = document.getElementById('baseOptionArea');
+  // const box = document.body;
   box.style.position = 'relative';
   box.appendChild(dropBox);
+  document.body.appendChild(dropBox);
   // select.appendChild(dropDown);
   // document.querySelector(option.parentContener).appendChild(dropBox);
   // console.log(option.parentContener);
 
   select.appendChild(icon);
   //dropDown的点击事件会触发select的点击事件 所以加一个控制器判断触发次数
-  let flag = '';
+  let flag = 1;
 
   //select下拉框选择事件
   dropDown.onclick = function (e) {
@@ -67,24 +71,26 @@ export default (option) => {
 
   //点击select事件
   select.onclick = function (e) {
-    //给select下拉框添加style以及定位
-    const disx = select.getBoundingClientRect().x - box.getBoundingClientRect().x;
-    const disy = select.getBoundingClientRect().y - box.getBoundingClientRect().y + select.offsetHeight;
-    const width = select.offsetWidth;
-    dropDown.setAttribute('style', 'width:' + width + 'px');
-    dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');
+    if (flag !== 2) {
+      //给select下拉框添加style以及定位
+      const disx = select.getBoundingClientRect().x - box.getBoundingClientRect().x;
+      const disy = select.getBoundingClientRect().y - box.getBoundingClientRect().y + select.offsetHeight;
+      const width = select.offsetWidth;
+      dropDown.setAttribute('style', 'width:' + width + 'px');
+      dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');
 
-    showDropdown();
+      showDropdown();
+    } else if (flag === 2) {
+      closeOption();
+    }
   };
 
   //关闭select下拉框
   function closeOption() {
     if (dropDown.style.display == 'block') {
-      console.log(2);
       flag += 1;
       if (flag === 3) {
         dropDown.style.display = 'none';
-        flag += 1;
         icon.childNodes[1].style.transform = 'rotate(0deg)';
         document.body.removeEventListener('click', closeOption);
       }

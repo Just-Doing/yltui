@@ -434,6 +434,7 @@ ul li {
   white-space: nowrap;
   line-height: 24px;
   text-indent: 10px;
+  clear: both;
 }
 .parentBox ul li:hover {
   background-color: #e6f7ff;
