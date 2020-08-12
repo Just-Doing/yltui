@@ -1,4 +1,5 @@
 import { controlWithLabel, getElementLeft, getElementTop } from '../render-utils';
+import createOption from './option';
 
 export default (option) => {
   if (!option.name) throw 'json 指定name 属性：' + JSON.stringify(option);
@@ -14,6 +15,9 @@ export default (option) => {
   const dropBox = document.createElement('div');
   dropBox.className = 'parentBox';
   dropBox.appendChild(dropDown);
+  const div = document.createElement('div');
+  // div.setAttribute('style', 'position: absolute; top: 0px; left: 0px; width: 100%;');
+  div.appendChild(dropBox);
 
   const icon = document.createElement('span');
   icon.setAttribute('class', 'icon');
@@ -25,15 +29,18 @@ export default (option) => {
   //生成select下拉框的option
   (option.items || []).forEach((o) => {
     debugger;
-    const option = document.createElement('li');
-    option.setAttribute('rel', o.value || '');
-    option.innerHTML = o.text;
-    dropDown.appendChild(option);
+    const selectOption = document.createElement('li');
+    selectOption.setAttribute('rel', o.value || '');
+    selectOption.innerHTML = o.text;
+    dropDown.appendChild(selectOption);
   });
 
   select.appendChild(selectSerach);
+  const box = document.getElementById('baseOptionArea');
+  box.appendChild(div);
   // select.appendChild(dropDown);
-  document.body.appendChild(dropBox);
+  // document.querySelector(option.parentContener).appendChild(dropBox);
+  // console.log(option.parentContener);
 
   select.appendChild(icon);
   //dropDown的点击事件会触发select的点击事件 所以加一个控制器判断触发次数
@@ -64,9 +71,8 @@ export default (option) => {
   select.onclick = function (e) {
     //给select下拉框添加style以及定位
     const disx = getElementLeft(select);
-    const disy = getElementTop(select) + select.offsetHeight;
+    const disy = select.getBoundingClientRect().y - box.getBoundingClientRect().y + select.offsetHeight;
     const width = select.offsetWidth;
-    console.log('aa', width);
     dropDown.setAttribute('style', 'width:' + width + 'px');
     dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');
 
