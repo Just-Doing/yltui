@@ -39,7 +39,6 @@ export default (option) => {
   // const box = document.body;
   box.style.position = 'relative';
   box.appendChild(dropBox);
-  document.body.appendChild(dropBox);
   // select.appendChild(dropDown);
   // document.querySelector(option.parentContener).appendChild(dropBox);
   // console.log(option.parentContener);
