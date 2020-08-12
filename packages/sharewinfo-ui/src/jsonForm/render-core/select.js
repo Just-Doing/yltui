@@ -43,6 +43,13 @@ export default (option) => {
   // document.querySelector(option.parentContener).appendChild(dropBox);
   // console.log(option.parentContener);
 
+  //给select下拉框添加style以及定位
+  const disx = select.getBoundingClientRect().x - box.getBoundingClientRect().x;
+  const disy = select.getBoundingClientRect().y - box.getBoundingClientRect().y + select.offsetHeight;
+  const width = select.offsetWidth;
+  dropDown.setAttribute('style', 'width:' + width + 'px');
+  dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');
+
   select.appendChild(icon);
   //dropDown的点击事件会触发select的点击事件 所以加一个控制器判断触发次数
   let flag = 1;
@@ -71,13 +78,6 @@ export default (option) => {
   //点击select事件
   select.onclick = function (e) {
     if (flag !== 2) {
-      //给select下拉框添加style以及定位
-      const disx = select.getBoundingClientRect().x - box.getBoundingClientRect().x;
-      const disy = select.getBoundingClientRect().y - box.getBoundingClientRect().y + select.offsetHeight;
-      const width = select.offsetWidth;
-      dropDown.setAttribute('style', 'width:' + width + 'px');
-      dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');
-
       showDropdown();
     } else if (flag === 2) {
       closeOption();
