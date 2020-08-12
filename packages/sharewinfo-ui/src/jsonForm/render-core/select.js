@@ -15,9 +15,6 @@ export default (option) => {
   const dropBox = document.createElement('div');
   dropBox.className = 'parentBox';
   dropBox.appendChild(dropDown);
-  const div = document.createElement('div');
-  // div.setAttribute('style', 'position: absolute; top: 0px; left: 0px; width: 100%;');
-  div.appendChild(dropBox);
 
   const icon = document.createElement('span');
   icon.setAttribute('class', 'icon');
@@ -36,8 +33,9 @@ export default (option) => {
   });
 
   select.appendChild(selectSerach);
-  const box = document.getElementById('baseFormArea');
-  box.appendChild(div);
+  const box = document.getElementById('baseOptionArea');
+  box.style.position = 'relative';
+  box.appendChild(dropDown);
   // select.appendChild(dropDown);
   // document.querySelector(option.parentContener).appendChild(dropBox);
   // console.log(option.parentContener);
@@ -70,7 +68,7 @@ export default (option) => {
   //点击select事件
   select.onclick = function (e) {
     //给select下拉框添加style以及定位
-    const disx = getElementLeft(select);
+    const disx = select.getBoundingClientRect().x - box.getBoundingClientRect().x;
     const disy = select.getBoundingClientRect().y - box.getBoundingClientRect().y + select.offsetHeight;
     const width = select.offsetWidth;
     dropDown.setAttribute('style', 'width:' + width + 'px');
