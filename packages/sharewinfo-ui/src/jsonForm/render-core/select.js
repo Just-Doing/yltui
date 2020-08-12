@@ -35,7 +35,7 @@ export default (option) => {
   select.appendChild(selectSerach);
   const box = document.getElementById('baseOptionArea');
   box.style.position = 'relative';
-  box.appendChild(dropDown);
+  box.appendChild(dropBox);
   // select.appendChild(dropDown);
   // document.querySelector(option.parentContener).appendChild(dropBox);
   // console.log(option.parentContener);
