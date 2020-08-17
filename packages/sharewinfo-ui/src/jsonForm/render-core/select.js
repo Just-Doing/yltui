@@ -34,38 +34,11 @@ export default (option) => {
     dropDown.appendChild(selectOption);
   });
 
-  function getElementTop(element, targetEl) {
-    var actualTop = element.offsetTop;
-    var current = element.offsetParent;
-
-    while (current !== null && current !== targetEl) {
-      actualTop += current.offsetTop;
-      current = current.offsetParent;
-    }
-
-    return actualTop;
-  }
-
-  function getElementLeft(element, targetEl) {
-    var actualLeft = element.offsetLeft;
-    var current = element.offsetParent;
-
-    while (current !== null && current !== targetEl) {
-      actualLeft += current.offsetLeft;
-      current = current.offsetParent;
-    }
-
-    return actualLeft;
-  }
-
   select.appendChild(selectSerach);
-  const box = document.getElementById('baseFormArea');
-  // const box = document.body;
-  box.style.position = 'relative';
-  box.appendChild(dropBox);
-  // select.appendChild(dropDown);
-  // document.querySelector(option.parentContener).appendChild(dropBox);
-  // console.log(option.parentContener);
+
+  const selectParentBox = document.querySelector(option.selectParentContener);
+  selectParentBox.style.position = 'relative';
+  selectParentBox.appendChild(dropBox);
 
   select.appendChild(icon);
   //dropDown的点击事件会触发select的点击事件 所以加一个控制器判断触发次数
@@ -96,8 +69,8 @@ export default (option) => {
   select.onclick = function (e) {
     if (flag !== 2) {
       //给select下拉框添加style以及定位
-      const disx = getElementLeft(select, box);
-      const disy = getElementTop(select, box) + select.offsetHeight;
+      const disx = getElementLeft(select, selectParentBox);
+      const disy = getElementTop(select, selectParentBox) + select.offsetHeight;
       const width = select.offsetWidth;
       dropDown.setAttribute('style', 'width:' + width + 'px');
       dropBox.setAttribute('style', 'position:absolute;left:' + disx + 'px;' + 'top:' + disy + 'px');

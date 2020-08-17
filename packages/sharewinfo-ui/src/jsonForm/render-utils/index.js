@@ -272,28 +272,28 @@ function supportLocalStorage() {
   }
 }
 
-function getElementLeft(element) {
-  var actualLeft = element.offsetLeft;
-  var current = element.offsetParent;
+function getElementTop(element, targetEl) {
+  let actualTop = element.offsetTop;
+  let current = element.offsetParent;
 
-  while (current !== null) {
-    actualLeft += current.offsetLeft;
-    current = current.offsetParent;
-  }
-
-  return actualLeft;
-}
-
-function getElementTop(element) {
-  var actualTop = element.offsetTop;
-  var current = element.offsetParent;
-
-  while (current !== null) {
+  while (current !== null && current !== targetEl) {
     actualTop += current.offsetTop;
     current = current.offsetParent;
   }
 
   return actualTop;
+}
+
+function getElementLeft(element, targetEl) {
+  let actualLeft = element.offsetLeft;
+  let current = element.offsetParent;
+
+  while (current !== null && current !== targetEl) {
+    actualLeft += current.offsetLeft;
+    current = current.offsetParent;
+  }
+
+  return actualLeft;
 }
 
 export { controlWithLabel, hsv2hsl, hsv2rgb, rgb2hex, getElementLeft, rgb2hsv, setFiledValue, supportLocalStorage, getElementTop };
