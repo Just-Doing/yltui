@@ -41,3 +41,10 @@ export declare class security {
   // RSA 解密
   static rsaDecode: (input: string, privateKey: string) => string;
 }
+
+export declare class browser {
+  // RSA 加密  对应服务端可解密
+  static getBrowserInfo: () => object;
+  // RSA 解密
+  static isMobile: () => boolean;
+}
