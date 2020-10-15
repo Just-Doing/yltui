@@ -1,6 +1,6 @@
 export declare class data {
   // 延时 异步操作
-  static delayToDo: (fun: Function, ms: number) => number;
+  static delayToDo: (fun: Function, ms: number, para: object) => number;
   // 递归数据
   // input: [{id:1, pid:0, name:'test1'},{id:2, pid:1, name:'test1'}]
   // result: [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]
