@@ -66,7 +66,7 @@ export function shallowEqual(objA, objB) {
 }
 
 // 延迟发起请求，
-export function delayToDo(fun, ms) {
+export function delayToDo(fun, ms, para) {
   if (!fun || !ms || typeof ms !== 'number' || typeof fun !== 'function') {
     throw new Error('参数错误');
   }
@@ -75,5 +75,5 @@ export function delayToDo(fun, ms) {
   }
   window.timer = setTimeout(function () {
     fun();
-  }, ms);
+  }, ms, para);
 }

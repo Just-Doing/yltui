@@ -48,3 +48,8 @@ export declare class browser {
   // RSA 解密
   static isMobile: () => boolean;
 }
+
+export declare class map {
+  // 计算两经纬度的距离
+  static getDistance: (lat1: number, lng1: number, lat2: number, lng2: number) => object;
+}
