@@ -73,7 +73,7 @@ export function delayToDo(fun, ms, para) {
   if (window.timer) {
     clearTimeout(window.timer);
   }
-  window.timer = setTimeout(function () {
-    fun();
+  window.timer = setTimeout(function (p) {
+    fun(p);
   }, ms, para);
 }
