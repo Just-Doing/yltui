@@ -22,9 +22,17 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
 
 // 根据key 去重数据
 export const distincetData = (array, key) => {
+  const args = arguments;
   const hash = {};
   const res = array.reduce((item, next) => {
-    hash[next[key]] ? '' : (hash[next[key]] = true && item.push(next));
+    let keyName = ''
+    for(let i=1;i<args.length; i++){
+      keyName += next[args[i]]||'-'
+    }
+    if(!hash[keyName]){
+      hash[keyName] = true
+      item.push(next)
+    } 
     return item;
   }, []);
   return res;
