@@ -21,13 +21,13 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
 };
 
 // 根据key 去重数据
-export const distincetData = (function f(array){
-  const args = f.arguments;
+export const distincetData = function(array, keys){
+  const args = keys;
   const hash = {};
   const res = array.reduce((item, next) => {
     let keyName = ''
-    for(let i=1; i< args.length; i++){
-      keyName += next[args[i]]||'$'
+    for(let i=0;i<args.length; i++){
+      keyName += next[args[i]]||'-'
     }
     if(!hash[keyName]){
       hash[keyName] = true
@@ -36,7 +36,7 @@ export const distincetData = (function f(array){
     return item;
   }, []);
   return res;
-})
+}
 
 // 深度 合并对象
 export const merge = function (minor, main) {
