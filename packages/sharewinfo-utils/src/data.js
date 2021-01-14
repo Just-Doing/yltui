@@ -26,8 +26,8 @@ export const distincetData = (function f(array){
   const hash = {};
   const res = array.reduce((item, next) => {
     let keyName = ''
-    for(let i=1;i<args.length; i++){
-      keyName += next[args[i]]||'-'
+    for(let i=1; i< args.length; i++){
+      keyName += next[args[i]]||'$'
     }
     if(!hash[keyName]){
       hash[keyName] = true
