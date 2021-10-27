@@ -63,9 +63,11 @@ export const formate = (inputDate, formateStr = 'yyyy-mm-dd HH:mm:ss') => {
       case 'yyyy-mm-dd hh:mm:ss':
         time = `${hours}:${minutes}:${seconds} ${hours > 12 ? hours - 12 : hours}:${minutes}:${seconds} ${hours > 12 ? 'PM' : 'AM'}`;
         break;
-
       case 'yyyy年mm月dd日':
         time = `${date.getFullYear()}年${month}月${day}日`;
+        break;
+      case 'yyyy年mm月dd日 hh:mm:ss':
+        time = `${date.getFullYear()}年${month}月${day}日 ${hours > 12 ? hours - 12 : hours}:${minutes}:${seconds} ${hours > 12 ? 'PM' : 'AM'}`;
         break;
       default:
         time = `${date.getFullYear()}-${month}-${day} ${hours}:${minutes}:${seconds}`;
