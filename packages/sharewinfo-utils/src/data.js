@@ -15,7 +15,12 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
     });
     return res;
   }
-  const roots = list.filter((o) => o[parentKeyName] === rootValue);
+  let roots = []
+  if(typeof rootValue === "function"){
+    roots = list.filter((o) => rootValue(o));
+  } else {
+    roots = list.filter((o) => o[parentKeyName] === rootValue);
+  }
   getData(roots, '');
   return roots;
 };
