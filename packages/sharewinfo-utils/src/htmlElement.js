@@ -1,3 +1,4 @@
+// 查询节点距左边顶部节点的宽度
 export function getElementLeft(element) {
   var actualLeft = element.offsetLeft;
   var current = element.offsetParent;
@@ -9,7 +10,7 @@ export function getElementLeft(element) {
 
   return actualLeft;
 }
-
+// 查询节点距顶部节点的 高度
 export function getElementTop(element) {
   var actualTop = element.offsetTop;
   var current = element.offsetParent;
