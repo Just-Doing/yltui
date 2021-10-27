@@ -1,6 +1,6 @@
 {
   "name": "sharewinfo-utils",
-  "version": "0.0.100",
+  "version": "0.0.101",
   "description": "sharewinfo-utils",
   "main": "index.js",
   "module": "./src/moment.js",
@@ -28,7 +28,7 @@
     "url": "https://github.com/Just-Doing/yltui/issues"
   },
   "homepage": "https://github.com/Just-Doing/yltui#readme",
-  "gitHead": "09265f12a9d388ca07052b35abaf553d78369f62",
+  "gitHead": "20f15bb500448956956a11bb36b9dd3252589326",
   "dependencies": {
     "jsencrypt": "^3.0.0-rc.1",
     "prettier": "^2.0.5"

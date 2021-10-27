@@ -1,5 +1,5 @@
 15 error Error: Command failed: git remote update
-15 error fatal: unable to access 'https://github.com/Just-Doing/yltui.git/': OpenSSL SSL_read: Connection was reset, errno 10054
+15 error fatal: unable to access 'https://github.com/Just-Doing/yltui.git/': Failed to connect to github.com port 443: Timed out
 15 error error: Could not fetch origin
 15 error
 15 error Fetching origin
