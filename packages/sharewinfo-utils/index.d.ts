@@ -6,7 +6,9 @@ export declare class data {
   // result: [{id:1, pid:0, name:'test1', children:[{id:2, pid:1, name:'test1'}]}]
   static recursionData: (list: Array<any>, keyName: string, parentKeyName: string, rootValue: string) => Array<any>;
   // 数组去重
-  static distincetData: (arrat: Array<any>, key1: string, key2: string,) => Array<any>;
+  static distinctData: (arrat: Array<any>, key1: string, key2: string,) => Array<any>;
+   // 数组分组
+   static groupBy: (arrat: Array<any>, key: Array<string>) => Array<any>;
   // 深度合并对象
   static merge: (minor: object, minObj: object) => object;
   // 判断对象全等
