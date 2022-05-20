@@ -15,8 +15,8 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
     });
     return res;
   }
-  let roots = []
-  if(typeof rootValue === "function"){
+  let roots = [];
+  if (typeof rootValue === 'function') {
     roots = list.filter((o) => rootValue(o));
   } else {
     roots = list.filter((o) => o[parentKeyName] === rootValue);
@@ -25,23 +25,43 @@ export const recursionData = (list, keyName, parentKeyName, rootValue) => {
   return roots;
 };
 
+// 根据keys 分组数据， 做children 子层级
+export const groupBy = function (array, keys) {
+  const args = keys;
+  const hash = {};
+  array.forEach((item) => {
+    let keyName = '';
+    for (let i = 0; i < args.length; i++) {
+      const checkSingleValue = item[args[i]];
+      keyName += checkSingleValue == null ? '-' : checkSingleValue;
+    }
+    if (!hash[keyName]) {
+      item.children = [item];
+      hash[keyName] = item;
+    } else {
+      hash[keyName].children.push(item);
+    }
+  }, []);
+  return Object.values(hash);
+};
+
 // 根据key 去重数据
-export const distincetData = function(array, keys){
+export const distinctData = function (array, keys) {
   const args = keys;
   const hash = {};
   const res = array.reduce((item, next) => {
-    let keyName = ''
-    for(let i=0;i<args.length; i++){
-      keyName += next[args[i]]||'-'
+    let keyName = '';
+    for (let i = 0; i < args.length; i++) {
+      keyName += next[args[i]] || '-';
     }
-    if(!hash[keyName]){
-      hash[keyName] = true
-      item.push(next)
-    } 
+    if (!hash[keyName]) {
+      hash[keyName] = true;
+      item.push(next);
+    }
     return item;
   }, []);
   return res;
-}
+};
 
 // 深度 合并对象
 export const merge = function (minor, main) {
@@ -86,7 +106,11 @@ export function delayToDo(fun, ms, para) {
   if (window.timer) {
     clearTimeout(window.timer);
   }
-  window.timer = setTimeout(function (p) {
-    fun(p);
-  }, ms, para);
+  window.timer = setTimeout(
+    function (p) {
+      fun(p);
+    },
+    ms,
+    para,
+  );
 }

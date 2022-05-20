@@ -76,3 +76,13 @@ export const formate = (inputDate, formateStr = 'yyyy-mm-dd HH:mm:ss') => {
   }
   return time;
 };
+
+export const getQuarter = (paraDate) => {
+  let date = new Date();
+  if (paraDate) {
+    date = new Date(paraDate);
+  }
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  return parseInt(`${year}0${Math.ceil(month / 3)}`, 10);
+};
